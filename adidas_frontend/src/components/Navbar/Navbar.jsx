@@ -5,6 +5,7 @@ import { RiUser3Line } from "react-icons/ri";
 import { PiHeartStraight } from "react-icons/pi";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaAngleDown } from "react-icons/fa6";
+import { HiArrowLongRight } from "react-icons/hi2";
 import "../Navbar/Navbar.css"
 
 const Navbar = () => {
@@ -45,6 +46,7 @@ const Navbar = () => {
                     </div>
                 </div>
         </div>
+        <div className="Navbar3"><div>Buy 2, Save an extra 20%! Exclusive Offer on Curated Picks this May!</div><div><span><HiArrowLongRight  style={{color: "black", fontSize: "26px", fontWeight:"500px"}}/></span></div></div>
     </div>
   )
 }

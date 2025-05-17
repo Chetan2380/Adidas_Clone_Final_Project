@@ -1,0 +1,9 @@
+.findyoursummerlook{
+    width: 100%;
+    height: 650px;
+}
+
+.findyoursummerlook > img{
+    width: 100%;
+    height: 100%;
+}

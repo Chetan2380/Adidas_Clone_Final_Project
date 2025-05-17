@@ -159,3 +159,27 @@
   .cartprof > div:nth-child(3){
     cursor: pointer;
   }
+
+  .Navbar3{
+    height: 50px;
+    /* border: 2px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: black;
+    background-color: rgb(236,239,241);
+    letter-spacing: 2px;
+  }
+
+  .Navbar3 > div:nth-child(1){
+    width: 95%;
+  }
+
+  .Navbar3 > span{
+    margin-left: 16px;
+    font-size: 15px;
+    margin-top: 10px;
+  }
