@@ -170,4 +170,126 @@
   color: black;
 }
 
+.buytwoormoreshoes {
+  width: 86%;
+  margin: auto; /* center the content */
+}
+
+.buytwoormoreshoestext {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-family: Arial, sans-serif;
+}
+
+.buytwoormoreshoestext1 {
+  font-size: 25px;
+  font-weight: bold;
+  color: #000;
+}
+
+.buytwoormoreshoestext2 {
+  font-size: 17px;
+  cursor: pointer;
+  border-bottom: 2px solid black;
+  font-weight: 600;
+}
+
+.shoeclothaccess {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.shoeclothaccess div {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: 100;
+  font-family: Arial, sans-serif;
+}
+
+.shoes {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+.clothing, .accessories {
+  transition: all 0.3s ease;
+}
+
+.clothing:hover, .accessories:hover {
+  background-color: #f2f2f2;
+}
+
+/* Container to wrap all shoes */
+.buytwoormoreshoes {
+  width: 86%;
+  margin: auto;
+}
+
+.differentshoes {
+  width: 24.5%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.differentshoes:hover {
+  border: 1px solid black;
+  box-shadow: 0 0 0 1px white inset;
+}
+
+.diffrentshoesimg {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.diffrentshoesimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px;
+  z-index: 2;
+}
+
+.differentshoesprice {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.differentshoestitle {
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.differentshoescategory {
+  margin-top: 4px;
+  color: #888888;
+  font-size: 14px;
+}
+
+.shoelist-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+
+
 
