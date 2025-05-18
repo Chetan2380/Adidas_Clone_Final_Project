@@ -435,7 +435,146 @@
   margin-left: 10px;
 }
 
+.whatshot {
+  width: 92.6%;
+  margin-left: 110px;
+  transition: margin-left 0.3s ease;
+  margin-top: 50px;
+}
 
+.whatshot-header {
+    text-align: left;
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.whatshot-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.whatshot-slider-container {
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  display: flex;
+  width: 100%;
+  transition: padding-right 0.3s ease;
+}
+
+.whatshot-card {
+  flex: 0 0 auto;
+  width: 330px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hover-container {
+  transition: border 0.3s ease;
+  border: 2px solid transparent;
+  padding: 2px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hover-container:hover {
+  border: 2px solid black;
+  background-color: #fff;
+}
+
+.whatshot-media {
+  height: 400px;
+  overflow: hidden;
+}
+
+.whatshot-media img,
+.whatshot-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.whatshot-details {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  text-align: left;
+  height: 150px;
+  padding: 10px;
+  position: relative;
+  gap: 6px;
+}
+
+.whatshot-title {
+  font-weight: 600;
+  font-size: 16px;
+  width: 100%;
+  text-align: justify;
+}
+
+.whatshot-desc {
+  font-size: 15px;
+  color: #555;
+  width: 80%;
+  text-align: justify;
+}
+
+.whatshot-spacer {
+  flex: 1; /* pushes category to bottom */
+}
+
+.whatshot-category {
+  font-size: 15px;
+  width: 80%;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  font-weight: 600;
+  text-align: justify;
+  text-decoration: underline;
+  text-underline-offset: 10px; 
+  text-decoration-thickness: 3.1px; 
+}
+
+.slider-arrow {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 8px;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slider-arrow.left {
+  left: 30px;
+}
+
+.slider-arrow.right {
+  right: 30px;
+}
+
+.whatshot-slider-container {
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  display: flex;
+  width: 100%;
+  transition: padding 0.3s ease;
+}
+
+.whatshot-details {
+  margin-top: 10px;
+  text-align: center; /* Center text */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 
 
 

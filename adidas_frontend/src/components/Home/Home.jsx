@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import "../Home/Home.css"
 import { HiArrowLongRight } from "react-icons/hi2";
@@ -6,6 +6,8 @@ import { PiHeartStraight } from "react-icons/pi";
 import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 
 const ITEMS_PER_PAGE = 4;
+const cardWidth = 330; // width of one card
+const scrollStep = cardWidth * 4;
 const Home = () => {
   const[buyshoes,setBuyshoes]=useState([{itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/5e0cf73d9a964b248bb16bb4d317db29_9366/Lightblaze_Shoes_Kids_White_JQ4758_00_plp_standard.jpg",price:"5 999",title:"Lightblaze Shoes Kids",category:"Sportswear"},
 {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/fc2836b180ad44dca55d0663c54b2536_9366/Lightblaze_Shoes_Kids_White_JQ4760_HM1.jpg",price:"5 999",title:"Lightblaze Shoes Kids",category:"Sportswear"},
@@ -20,6 +22,19 @@ const Home = () => {
 {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/b83c150240c345578e5990739b0ed710_9366/BASIC_RUN-WAVE_Blue_JK0840_00_plp_standard.jpg",price:"3 799",title:"BASIC RUN-WAVE",category:"Performance"},
 {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/511c0b159b1c4c18ad0e77d84fead21f_9366/BASIC_RUN-WAVE_White_JK0839_00_plp_standard.jpg",price:"3 799",title:"BASIC RUN-WAVE",category:"Performance"}])
 
+const[whathotitem,setWhathotitem]=useState([{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/tc_ZNE_37ef896079.jpg",title:" Z.N.E. TANK SIGNED BY DECLAN RICE",desc:"Win a women's tee or tank from the new ADIDAS Z.N.E. range signed by Declan Rice.",category:"SIGN UP NOW"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/100_thives_tc_beb7dbad84.jpg",title:"adidas x 100 Thieves",desc:"Digital Explorer, Analog World.",category:"Shop now"},
+{itemimg:"https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_800,w_800/global_move_for_the_planet_brand_ss25_launch_sustain_Onsite_TC_d_695263252d.mp4",title:"MOVE FOR THE PLANET",desc:"Track your movement to make an impact.",category:"Join challenge"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/t_C_5_1_39e8a83c13.jpg",title:"WIN THE NEW SS25 SUPERNOVA!",desc:"Redeem your points and enter the raffle for a chance to own your piece. Don’t miss out!",category:"Enter now"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/tc_2_2_6857c6a386.jpg",title:"Play your best Padel",desc:"Get ready for your next Padel session with the best from adidas.",category:"SHOP NOW"},
+{itemimg:"https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_800,w_800/global_the_original_originals_ss25_sustain_hp_superstar_teaser_carousel_asset_d_61d87fb8e0.mp4",title:"The Original Superstar",desc:"From the court to the street.",category:"Shop now"},
+{itemimg:"https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_800,w_800/global_motorsports_motorsports_ss25_sustain_hp_catlp_glp_navigation_card_teaser_6_d_e388143ea8.mp4",title:"Show Your Passion",desc:"The adidas x Mercedes-AMG PETRONAS F1 Fanwear collection.",category:"SHOP NOW"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/TC_Never_out_of_style_2_282e2aa284.gif",title:"Never Out Of Style",desc:"Shop the best of adidas",category:"SHOP NOW"}])
+
+const sliderRef = useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [scrolledRight, setScrolledRight] = useState(false);
 const [currentPage, setCurrentPage] = useState(0);
   const totalPages = Math.ceil(buyshoes.length / ITEMS_PER_PAGE);
   const startIndex = currentPage * ITEMS_PER_PAGE;
@@ -31,6 +46,25 @@ const [currentPage, setCurrentPage] = useState(0);
 
   const prevPage = () => {
     if (currentPage > 0) setCurrentPage(currentPage - 1);
+  };
+
+  const handleScroll = (direction) => {
+    if (!sliderRef.current) return;
+    const container = sliderRef.current;
+
+    if (direction === "right") {
+      container.scrollTo({
+        left: scrollStep,
+        behavior: "smooth",
+      });
+      setShowLeftArrow(true); // show left arrow after right click
+    } else {
+      container.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+      setShowLeftArrow(false); // hide left arrow when back to start
+    }
   };
 
   return (
@@ -131,6 +165,57 @@ const [currentPage, setCurrentPage] = useState(0);
               <div><p>Men</p></div> <div><HiArrowLongRight  style={{color: "black", fontSize: "26px", fontWeight:"500px"}}/></div>
             </div>
         </div>
+
+        <div className='whatshot'>
+      <div className="whatshot-header">
+        <h2>What's Hot ?</h2>
+      </div>
+
+      <div
+        className='whatshot-slider-wrapper'
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {showLeftArrow && isHovered && (
+          <button className="slider-arrow left" onClick={() => handleScroll("left")}>
+            <PiCaretLeftBold />
+          </button>
+        )}
+
+        {isHovered && (
+          <button className="slider-arrow right" onClick={() => handleScroll("right")}>
+            <PiCaretRightBold />
+          </button>
+        )}
+
+        <div className='whatshot-slider-container' ref={sliderRef}>
+          {whathotitem.map((item, index) => {
+            const isVideo = item.itemimg.endsWith(".mp4");
+            return (
+              <div className='whatshot-card' key={index}>
+                <div className='hover-container'>
+                  <div className='whatshot-media'>
+                    {isVideo ? (
+                      <video src={item.itemimg} muted autoPlay loop playsInline />
+                    ) : (
+                      <img src={item.itemimg} alt={item.title} />
+                    )}
+                  </div>
+
+                  <div className='whatshot-details'>
+                    <div className='whatshot-title'>{item.title}</div>
+                    <div className='whatshot-desc'>{item.desc}</div>
+                    <div className='whatshot-spacer'></div> {/* pushes category down */}
+                    <div className='whatshot-category'>{item.category}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+
     </div>
   )
 }
