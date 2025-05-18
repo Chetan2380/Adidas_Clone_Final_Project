@@ -563,9 +563,15 @@
 .whatshot-slider-container {
   overflow-x: scroll;
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   display: flex;
   width: 100%;
   transition: padding 0.3s ease;
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .whatshot-details {
