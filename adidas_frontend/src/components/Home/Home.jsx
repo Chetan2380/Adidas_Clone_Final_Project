@@ -167,54 +167,68 @@ const [currentPage, setCurrentPage] = useState(0);
         </div>
 
         <div className='whatshot'>
-      <div className="whatshot-header">
-        <h2>What's Hot ?</h2>
+          <div className="whatshot-header">
+            <h2>What's Hot ?</h2>
+          </div>
+
+          <div
+            className='whatshot-slider-wrapper'
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {showLeftArrow && isHovered && (
+              <button className="slider-arrow left" onClick={() => handleScroll("left")}>
+                <PiCaretLeftBold />
+              </button>
+            )}
+
+            {isHovered && (
+              <button className="slider-arrow right" onClick={() => handleScroll("right")}>
+                <PiCaretRightBold />
+              </button>
+            )}
+
+            <div className='whatshot-slider-container' ref={sliderRef}>
+              {whathotitem.map((item, index) => {
+                const isVideo = item.itemimg.endsWith(".mp4");
+                return (
+                  <div className='whatshot-card' key={index}>
+                    <div className='hover-container'>
+                      <div className='whatshot-media'>
+                        {isVideo ? (
+                          <video src={item.itemimg} muted autoPlay loop playsInline />
+                        ) : (
+                          <img src={item.itemimg} alt={item.title} />
+                        )}
+                      </div>
+
+                      <div className='whatshot-details'>
+                        <div className='whatshot-title'>{item.title}</div>
+                        <div className='whatshot-desc'>{item.desc}</div>
+                        <div className='whatshot-spacer'></div> {/* pushes category down */}
+                        <div className='whatshot-category'>{item.category}</div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
       </div>
 
-      <div
-        className='whatshot-slider-wrapper'
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {showLeftArrow && isHovered && (
-          <button className="slider-arrow left" onClick={() => handleScroll("left")}>
-            <PiCaretLeftBold />
-          </button>
-        )}
-
-        {isHovered && (
-          <button className="slider-arrow right" onClick={() => handleScroll("right")}>
-            <PiCaretRightBold />
-          </button>
-        )}
-
-        <div className='whatshot-slider-container' ref={sliderRef}>
-          {whathotitem.map((item, index) => {
-            const isVideo = item.itemimg.endsWith(".mp4");
-            return (
-              <div className='whatshot-card' key={index}>
-                <div className='hover-container'>
-                  <div className='whatshot-media'>
-                    {isVideo ? (
-                      <video src={item.itemimg} muted autoPlay loop playsInline />
-                    ) : (
-                      <img src={item.itemimg} alt={item.title} />
-                    )}
-                  </div>
-
-                  <div className='whatshot-details'>
-                    <div className='whatshot-title'>{item.title}</div>
-                    <div className='whatshot-desc'>{item.desc}</div>
-                    <div className='whatshot-spacer'></div> {/* pushes category down */}
-                    <div className='whatshot-category'>{item.category}</div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+      <div className='pictureperfect'>
+            <img src='https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_1920,w_1920/MH_28c847a0d8.jpg'/>
+            <div id="pictureperfecttext1">
+              <p>PICTURE PERFECT</p>
+            </div>
+            <div id="pictureperfecttext2">
+              <p>Wear these vacation looks on repeat.</p>
+            </div>
+            <div id="pictureperfectshopnow">
+              <div><p>SHOP NOW</p></div> <div><HiArrowLongRight  style={{color: "black", fontSize: "26px", fontWeight:"500px"}}/></div>
+            </div>
+            <div id="pictureperfectshopnow2"></div>
         </div>
-      </div>
-    </div>
 
     </div>
   )

@@ -576,6 +576,76 @@
   gap: 6px;
 }
 
+.pictureperfect{
+    width: 100%;
+    height: 650px;
+    position: relative;
+    margin-top: 60px;
+}
+
+.pictureperfect > img{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#pictureperfecttext1{
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 470px;
+    left: 110px;
+    background-color: white;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#pictureperfecttext2{
+    width: 18%;
+    color: black;
+    font-size: 16px;
+    position: absolute;
+    top: 510px;
+    left: 110px;
+    background-color: white;
+    padding: 2px;
+}
+
+#pictureperfectshopnow{
+    width: 11%;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 550px;
+    left: 110px;
+    z-index: 1;
+}
+
+#pictureperfectshopnow > div:nth-child(2){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+#pictureperfectshopnow2{
+    width: 11%;
+    height: 50px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 555px;
+    left: 114px;
+}
+
 
 
 
