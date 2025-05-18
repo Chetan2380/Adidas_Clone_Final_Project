@@ -1,9 +1,173 @@
+*{
+    font-family: ITC Avant Garde Gothic;
+}
+
 .findyoursummerlook{
     width: 100%;
     height: 650px;
+    position: relative;
 }
 
 .findyoursummerlook > img{
     width: 100%;
     height: 100%;
+    position: relative;
 }
+
+#summercolltext1{
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 470px;
+    left: 110px;
+    background-color: white;
+    letter-spacing: 1px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#summercolltext2{
+    width: 20%;
+    color: black;
+    font-size: 16px;
+    position: absolute;
+    top: 510px;
+    left: 110px;
+    background-color: white;
+    letter-spacing: 1px;
+    width:19%
+}
+
+#summercollshopnow{
+    width: 11%;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 550px;
+    left: 110px;
+    z-index: 1;
+}
+
+#summercollshopnow > div:nth-child(2){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+#summercollshopnow2{
+    width: 11%;
+    height: 50px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 555px;
+    left: 114px;
+}
+
+#shopbestofsum {
+  width: 86%;
+  height: 650px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+#shopbestofsumtext1 {
+  font-size: 30px;
+  text-align: left;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#shopbestofsumimgs {
+  width: 74%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.shopbestofsumimg-wrapper {
+  width: 32.9%;
+  margin-top: 10px;
+  position: relative;
+  border: 1px solid transparent;
+  padding-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.shopbestofsumimg-wrapper:hover {
+  border: 1px solid black;
+  box-shadow: 0 0 0 1px white inset;
+}
+
+.shopbestofsumimg-wrapper:hover::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  border: 3px solid white; /* Inner white border */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shopbestofsumimg {
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+}
+
+#shopbestofsumimg1 {
+  background-image: url("https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/shorts_1050x1400_0cfb84b37a.gif");
+}
+#shopbestofsumimg2 {
+  background-image: url("https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/tshirts_1050x1400_66661a2984.gif");
+}
+#shopbestofsumimg3 {
+  background-image: url("https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/slides_1050x1400_4db2f1b391.gif");
+}
+
+.shopbestofsumimgtext1 {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 17%;
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: 2px solid black;
+  padding-bottom: 4px;
+  color: black;
+}
+
+.shopbestofsumimgtext2 {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 20%;
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: 2px solid black;
+  padding-bottom: 4px;
+  color: black;
+}
+
+.shopbestofsumimgtext3 {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 16%;
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: 2px solid black;
+  padding-bottom: 4px;
+  color: black;
+}
+
+
