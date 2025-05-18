@@ -3,7 +3,9 @@ import Navbar from '../Navbar/Navbar'
 import "../Home/Home.css"
 import { HiArrowLongRight } from "react-icons/hi2";
 import { PiHeartStraight } from "react-icons/pi";
+import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 
+const ITEMS_PER_PAGE = 4;
 const Home = () => {
   const[buyshoes,setBuyshoes]=useState([{itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/5e0cf73d9a964b248bb16bb4d317db29_9366/Lightblaze_Shoes_Kids_White_JQ4758_00_plp_standard.jpg",price:"5 999",title:"Lightblaze Shoes Kids",category:"Sportswear"},
 {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/fc2836b180ad44dca55d0663c54b2536_9366/Lightblaze_Shoes_Kids_White_JQ4760_HM1.jpg",price:"5 999",title:"Lightblaze Shoes Kids",category:"Sportswear"},
@@ -17,6 +19,20 @@ const Home = () => {
 {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/1d09074e55e2448c8cc69725956bb553_9366/BASIC_RUN-WAVE_Black_JK0841_00_plp_standard.jpg",price:"3 799",title:"BASIC RUN-WAVE",category:"Performance"},
 {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/b83c150240c345578e5990739b0ed710_9366/BASIC_RUN-WAVE_Blue_JK0840_00_plp_standard.jpg",price:"3 799",title:"BASIC RUN-WAVE",category:"Performance"},
 {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/511c0b159b1c4c18ad0e77d84fead21f_9366/BASIC_RUN-WAVE_White_JK0839_00_plp_standard.jpg",price:"3 799",title:"BASIC RUN-WAVE",category:"Performance"}])
+
+const [currentPage, setCurrentPage] = useState(0);
+  const totalPages = Math.ceil(buyshoes.length / ITEMS_PER_PAGE);
+  const startIndex = currentPage * ITEMS_PER_PAGE;
+  const visibleShoes = buyshoes.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const nextPage = () => {
+    if (currentPage < totalPages - 1) setCurrentPage(currentPage + 1);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) setCurrentPage(currentPage - 1);
+  };
+
   return (
     <div>
         <Navbar/>
@@ -64,21 +80,37 @@ const Home = () => {
             <div className='clothing'>CLOTHING</div>
             <div className='accessories'>ACCESSORIES</div>
           </div>
-          <div className="shoelist-wrapper">
-            {buyshoes.map((buymoreshoes) => (
-              <div className="differentshoes">
-                <div className="diffrentshoesimg">
-                  <img src={buymoreshoes.itemimg} />
-                  <div id="heart">
-                    <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
-                  </div>
-                </div>
-                <div className="differentshoesprice">₹{buymoreshoes.price}</div>
-                <div className="differentshoestitle">{buymoreshoes.title}</div>
-                <div className="differentshoescategory">{buymoreshoes.category}</div>
-              </div>
-            ))}
+          <div className='slider-container'>
+  <div className='shoe-slider-wrapper'>
+    <button onClick={prevPage} disabled={currentPage === 0} className='nav-arrow left'>
+      <PiCaretLeftBold />
+    </button>
+
+    <div className="shoelist-wrapper">
+      {visibleShoes.map((buymoreshoes, index) => (
+        <div className="differentshoes" key={index}>
+          <div className="diffrentshoesimg">
+            <img src={buymoreshoes.itemimg} alt={buymoreshoes.title} />
+            <div id="heart">
+              <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+            </div>
           </div>
+          <div className="differentshoesprice">₹{buymoreshoes.price}</div>
+          <div className="differentshoestitle">{buymoreshoes.title}</div>
+          <div className="differentshoescategory">{buymoreshoes.category}</div>
+        </div>
+      ))}
+    </div>
+
+    <button onClick={nextPage} disabled={currentPage === totalPages - 1} className='nav-arrow right'>
+      <PiCaretRightBold />
+    </button>
+  </div>
+
+  <div className="progress-bar-container">
+    <div className="progress-bar" style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}></div>
+  </div>
+</div>
 
         </div>
     </div>

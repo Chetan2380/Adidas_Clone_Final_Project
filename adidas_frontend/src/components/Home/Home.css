@@ -75,7 +75,7 @@
 
 #shopbestofsum {
   width: 86%;
-  height: 650px;
+  height: 580px;
   margin: auto;
   margin-top: 40px;
 }
@@ -172,7 +172,7 @@
 
 .buytwoormoreshoes {
   width: 86%;
-  margin: auto; /* center the content */
+  margin: auto; 
 }
 
 .buytwoormoreshoestext {
@@ -198,7 +198,6 @@
 
 .shoeclothaccess {
   display: flex;
-  gap: 10px;
   margin-top: 10px;
 }
 
@@ -224,10 +223,17 @@
   background-color: #f2f2f2;
 }
 
-/* Container to wrap all shoes */
-.buytwoormoreshoes {
-  width: 86%;
-  margin: auto;
+.shoe-slider-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.shoelist-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .differentshoes {
@@ -283,11 +289,52 @@
   font-size: 14px;
 }
 
-.shoelist-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
+
+.nav-arrow.left {
+  left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-arrow.right {
+  right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.shoe-slider-wrapper:hover .nav-arrow {
+  opacity: 1;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 5px;
+  background-color: #e0e0e0;
+  margin: 10px auto;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: black;
+  transition: width 0.3s ease;
+}
+
 
 
 
