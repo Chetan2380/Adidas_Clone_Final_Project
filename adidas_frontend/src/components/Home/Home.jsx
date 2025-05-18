@@ -31,6 +31,15 @@ const[whathotitem,setWhathotitem]=useState([{itemimg:"https://brand.assets.adida
 {itemimg:"https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_800,w_800/global_motorsports_motorsports_ss25_sustain_hp_catlp_glp_navigation_card_teaser_6_d_e388143ea8.mp4",title:"Show Your Passion",desc:"The adidas x Mercedes-AMG PETRONAS F1 Fanwear collection.",category:"SHOP NOW"},
 {itemimg:"https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/TC_Never_out_of_style_2_282e2aa284.gif",title:"Never Out Of Style",desc:"Shop the best of adidas",category:"SHOP NOW"}])
 
+const[selectsportitem,setSelectsportitem]=useState([{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/cricket_TC_eb127c1142.jpg",title:"CRICKET"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/running_d_79c8219795_6bcee20cc4.jpg",title:"RUNNING"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/training_d_a5c2eb1789.jpg",title:"TRAINING"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/football_d_6dd2ca489e.jpg",title:"FOOTBALL"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/basketball_d_3c3c58f008.jpg",title:"BASKETBALL"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/tennis_d_84458b28fe.jpg",title:"TENNIS"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/golf_d_8f6a5ceae9.jpg",title:"GOLF"},
+{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/swimming_d_13c2016e02.jpg",title:"SWIMMING"}])
+
 const sliderRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -230,6 +239,44 @@ const [currentPage, setCurrentPage] = useState(0);
             <div id="pictureperfectshopnow2"></div>
         </div>
 
+        <div className='selectsport'>
+          <div className="selectsport-header">
+            <h2>SELECT YOUR SPORT, FIND YOUR GEAR, AND GET IN THE GAME !</h2>
+          </div>
+
+          <div
+            className="selectsport-slider-wrapper"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {showLeftArrow && isHovered && (
+              <button className="slider-arrow left" onClick={() => handleScroll("left")}>
+                <PiCaretLeftBold />
+              </button>
+            )}
+
+            {isHovered && (
+              <button className="slider-arrow right" onClick={() => handleScroll("right")}>
+                <PiCaretRightBold />
+              </button>
+            )}
+
+            <div className="selectsport-slider-container" ref={sliderRef}>
+              {selectsportitem.map((item, index) => (
+                <div className="selectsport-card" key={index}>
+                  <div className="hover-container">
+                    <div className="selectsport-media">
+                      <img src={item.itemimg} alt={item.title} />
+                    </div>
+                    <div className="selectsport-details">
+                      <div className="selectsport-title">{item.title}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
     </div>
   )
 }
