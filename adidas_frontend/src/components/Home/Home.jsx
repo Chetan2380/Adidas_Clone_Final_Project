@@ -81,37 +81,55 @@ const [currentPage, setCurrentPage] = useState(0);
             <div className='accessories'>ACCESSORIES</div>
           </div>
           <div className='slider-container'>
-  <div className='shoe-slider-wrapper'>
-    <button onClick={prevPage} disabled={currentPage === 0} className='nav-arrow left'>
-      <PiCaretLeftBold />
-    </button>
+            <div className='shoe-slider-wrapper'>
+              <button onClick={prevPage} disabled={currentPage === 0} className='nav-arrow left'>
+                <PiCaretLeftBold />
+              </button>
 
-    <div className="shoelist-wrapper">
-      {visibleShoes.map((buymoreshoes, index) => (
-        <div className="differentshoes" key={index}>
-          <div className="diffrentshoesimg">
-            <img src={buymoreshoes.itemimg} alt={buymoreshoes.title} />
-            <div id="heart">
-              <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+              <div className="shoelist-wrapper">
+                {visibleShoes.map((buymoreshoes, index) => (
+                  <div className="differentshoes" key={index}>
+                    <div className="diffrentshoesimg">
+                      <img src={buymoreshoes.itemimg} alt={buymoreshoes.title} />
+                      <div id="heart">
+                        <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                      </div>
+                    </div>
+                    <div className="differentshoesprice">₹{buymoreshoes.price}</div>
+                    <div className="differentshoestitle">{buymoreshoes.title}</div>
+                    <div className="differentshoescategory">{buymoreshoes.category}</div>
+                  </div>
+                ))}
+              </div>
+
+              <button onClick={nextPage} disabled={currentPage === totalPages - 1} className='nav-arrow right'>
+                <PiCaretRightBold />
+              </button>
+            </div>
+
+            <div className="progress-bar-container">
+              <div className="progress-bar" style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}></div>
             </div>
           </div>
-          <div className="differentshoesprice">₹{buymoreshoes.price}</div>
-          <div className="differentshoestitle">{buymoreshoes.title}</div>
-          <div className="differentshoescategory">{buymoreshoes.category}</div>
         </div>
-      ))}
-    </div>
 
-    <button onClick={nextPage} disabled={currentPage === totalPages - 1} className='nav-arrow right'>
-      <PiCaretRightBold />
-    </button>
-  </div>
-
-  <div className="progress-bar-container">
-    <div className="progress-bar" style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}></div>
-  </div>
-</div>
-
+        <div className='supernovarise'>
+            <img src='https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_1920,w_1920/global_supernova_running_ss25_early_access_hp_catlp_banner_hero_d_e43a8f24a0.jpg'/>
+            <div id="supernovarisetext1">
+              <p>Supernova Rise 2</p>
+            </div>
+            <div id="supernovarisetext2">
+              <p>Running is never easy, but with the Supercomfort of</p>
+            </div>
+            <div id="supernovarisetext3">
+              <p>Supernova, it's always nice.</p>
+            </div>
+            <div id="supernovarisewomen">
+              <div><p>Women</p></div> <div><HiArrowLongRight  style={{color: "black", fontSize: "26px", fontWeight:"500px"}}/></div>
+            </div>
+            <div id="supernovarisemen">
+              <div><p>Men</p></div> <div><HiArrowLongRight  style={{color: "black", fontSize: "26px", fontWeight:"500px"}}/></div>
+            </div>
         </div>
     </div>
   )

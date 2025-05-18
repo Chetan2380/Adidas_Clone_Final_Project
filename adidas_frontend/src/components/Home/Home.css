@@ -1,6 +1,6 @@
-*{
+/* *{
     font-family: ITC Avant Garde Gothic;
-}
+} */
 
 .findyoursummerlook{
     width: 100%;
@@ -172,6 +172,7 @@
 
 .buytwoormoreshoes {
   width: 86%;
+  height: 560px;
   margin: auto; 
 }
 
@@ -199,6 +200,7 @@
 .shoeclothaccess {
   display: flex;
   margin-top: 10px;
+  gap: 8px;
 }
 
 .shoeclothaccess div {
@@ -334,6 +336,105 @@
   background-color: black;
   transition: width 0.3s ease;
 }
+
+.supernovarise {
+  width: 100%;
+  height: 550px;
+  position: relative;
+  overflow: hidden;
+}
+
+.supernovarise > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+}
+
+/* Main heading */
+#supernovarisetext1 {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: 380px;
+  left: 110px;
+  background-color: white;
+  letter-spacing: 1px;
+  padding: 0 4px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Subheading line 1 */
+#supernovarisetext2 {
+  width: 24.5%;
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  top: 420px;
+  left: 110px;
+  background-color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* Subheading line 2 */
+#supernovarisetext3 {
+  width: 15%;
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  top: 445px;
+  left: 110px;
+  background-color: white;
+  letter-spacing: 1px;
+  padding: 0 4px;
+}
+
+#supernovarisewomen {
+  width: 7.5%;
+  height: 35px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  position: absolute;
+  top: 490px;
+  left: 110px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#supernovarisewomen > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+#supernovarisemen {
+  width: 6%;
+  height: 35px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  position: absolute;
+  top: 490px;
+  left: 240px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#supernovarisemen > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
 
 
 
