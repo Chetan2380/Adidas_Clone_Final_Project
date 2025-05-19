@@ -1,0 +1,82 @@
+.supernovarise2{
+    width: 100%;
+    height: 650px;
+    position: relative;
+}
+
+.supernovarise2 > img{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#supernovarise2text1{
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 430px;
+    left: 110px;
+    background-color: white;
+    letter-spacing: 1px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#supernovarise2text2 {
+  width: 24.5%;
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  top: 467px;
+  left: 110px;
+  background-color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* Subheading line 2 */
+#supernovarise2text3 {
+  width: 15%;
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  top: 492px;
+  left: 110px;
+  background-color: white;
+  letter-spacing: 1px;
+  padding: 0 4px;
+}
+
+#supernovarise2shopnow{
+    width: 11%;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 540px;
+    left: 110px;
+    z-index: 1;
+}
+
+#supernovarise2shopnow > div:nth-child(2){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+#supernovarise2shopnow2{
+    width: 11%;
+    height: 50px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 545px;
+    left: 114px;
+}

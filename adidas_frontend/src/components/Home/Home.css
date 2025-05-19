@@ -455,7 +455,7 @@
 }
 
 .whatshot-slider-container {
-  overflow-x: scroll;
+  overflow-x: auto;
   scroll-behavior: smooth;
   display: flex;
   width: 100%;
@@ -740,7 +740,7 @@
   padding-left: 10px;
 }
 
-.slider-arrow {
+.slider-arrow2 {
   background: rgba(255, 255, 255, 0.9);
   border: none;
   cursor: pointer;
@@ -752,11 +752,11 @@
   transform: translateY(-50%);
 }
 
-.slider-arrow.left {
+.slider-arrow2.left {
   left: 30px;
 }
 
-.slider-arrow.right {
+.slider-arrow2.right {
   right: 30px;
 }
 

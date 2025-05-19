@@ -44,7 +44,6 @@ const[selectsportitem,setSelectsportitem]=useState([{itemimg:"https://brand.asse
 const sliderRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [scrolledRight, setScrolledRight] = useState(false);
 const [currentPage, setCurrentPage] = useState(0);
   const totalPages = Math.ceil(buyshoes.length / ITEMS_PER_PAGE);
   const startIndex = currentPage * ITEMS_PER_PAGE;
@@ -59,23 +58,18 @@ const [currentPage, setCurrentPage] = useState(0);
   };
 
   const handleScroll = (direction) => {
-    if (!sliderRef.current) return;
-    const container = sliderRef.current;
+  if (!sliderRef.current) return;
+  const container = sliderRef.current;
 
-    if (direction === "right") {
-      container.scrollTo({
-        left: scrollStep,
-        behavior: "smooth",
-      });
-      setShowLeftArrow(true); // show left arrow after right click
-    } else {
-      container.scrollTo({
-        left: 0,
-        behavior: "smooth",
-      });
-      setShowLeftArrow(false); // hide left arrow when back to start
-    }
-  };
+  const scrollAmount = direction === "right" ? scrollStep : -scrollStep;
+
+  container.scrollBy({
+    left: scrollAmount,
+    behavior: "smooth",
+  });
+
+  setShowLeftArrow(container.scrollLeft + scrollAmount > 0);
+};
 
   return (
     <div>
@@ -181,11 +175,7 @@ const [currentPage, setCurrentPage] = useState(0);
             <h2>What's Hot ?</h2>
           </div>
 
-          <div
-            className='whatshot-slider-wrapper'
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
+          <div className='whatshot-slider-wrapper' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
             {showLeftArrow && isHovered && (
               <button className="slider-arrow left" onClick={() => handleScroll("left")}>
                 <PiCaretLeftBold />
@@ -251,13 +241,13 @@ const [currentPage, setCurrentPage] = useState(0);
             onMouseLeave={() => setIsHovered(false)}
           >
             {showLeftArrow && isHovered && (
-              <button className="slider-arrow left" onClick={() => handleScroll("left")}>
+              <button className="slider-arrow2 left" onClick={() => handleScroll("left")}>
                 <PiCaretLeftBold />
               </button>
             )}
 
             {isHovered && (
-              <button className="slider-arrow right" onClick={() => handleScroll("right")}>
+              <button className="slider-arrow2 right" onClick={() => handleScroll("right")}>
                 <PiCaretRightBold />
               </button>
             )}
