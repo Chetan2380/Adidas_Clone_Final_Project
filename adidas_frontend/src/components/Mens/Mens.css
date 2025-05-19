@@ -80,3 +80,234 @@
     top: 545px;
     left: 114px;
 }
+
+.whatshot2 {
+  width: 92.6%;
+  margin-left: 110px;
+  transition: margin-left 0.3s ease;
+  margin-top: 50px;
+  height: 620px;
+}
+
+.whatshot2-header {
+  text-align: left;
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.whatshot2-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.whatshot2-slider-container {
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  display: flex;
+  width: 100%;
+  transition: padding 0.3s ease;
+}
+
+.whatshot2-slider-container::-webkit-scrollbar {
+  display: none;
+}
+
+.whatshot2-card {
+  flex: 0 0 auto;
+  width: 330px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.whatshot2-hover-container {
+  transition: border 0.3s ease;
+  border: 2px solid transparent;
+  padding: 2px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.whatshot2-hover-container:hover {
+  border: 2px solid black;
+  background-color: #fff;
+}
+
+.whatshot2-media {
+  height: 400px;
+  overflow: hidden;
+}
+
+.whatshot2-media img,
+.whatshot2-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.whatshot2-details {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  text-align: left;
+  height: 150px;
+  padding: 10px;
+  position: relative;
+  gap: 6px;
+}
+
+.whatshot2-title {
+  font-weight: 600;
+  font-size: 16px;
+  width: 100%;
+  text-align: justify;
+}
+
+.whatshot2-desc {
+  font-size: 15px;
+  color: #555;
+  width: 80%;
+  text-align: justify;
+}
+
+.whatshot2-spacer {
+  flex: 1; /* pushes category to bottom */
+}
+
+.whatshot2-category {
+  font-size: 15px;
+  width: 80%;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  font-weight: 600;
+  text-align: justify;
+  text-decoration: underline;
+  text-underline-offset: 10px; 
+  text-decoration-thickness: 3.1px; 
+}
+
+.slider-arrow3 {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 8px;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slider-arrow3.left {
+  left: 30px;
+}
+
+.slider-arrow3.right {
+  right: 30px;
+}
+
+.theracebegin{
+    width: 100%;
+    height: 650px;
+    position: relative;
+}
+
+.theracebegin > img{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#adidasmercedes {
+    width: 6%;
+    height: 30px;
+    position: absolute;
+    top: 400px; /* moved above theracebegintext1 */
+    left: 110px;
+    background-color: white;
+}
+
+#adidasmercedes > img {
+    width: 90%;
+    height: 90%;
+    margin-top: 3px;
+    /* object-fit: cover; */
+}
+
+#theracebegintext1{
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 431px;
+    left: 110px;
+    background-color: white;
+    letter-spacing: 1px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#theracebegintext2 {
+  width: 23%;
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  top: 470px;
+  left: 110px;
+  background-color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* Subheading line 2 */
+#theracebegintext3 {
+  width: 19.6%;
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  top: 494px;
+  left: 110px;
+  background-color: white;
+  letter-spacing: 1px;
+  padding: 0 4px;
+}
+
+#theracebeginshopnow{
+    width: 11%;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 540px;
+    left: 110px;
+    z-index: 1;
+}
+
+#theracebeginshopnow > div:nth-child(2){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+#theracebeginshopnow2{
+    width: 11%;
+    height: 50px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 545px;
+    left: 114px;
+}

@@ -454,13 +454,13 @@
   align-items: center;
 }
 
-.whatshot-slider-container {
+/* .whatshot-slider-container {
   overflow-x: auto;
   scroll-behavior: smooth;
   display: flex;
   width: 100%;
   transition: padding-right 0.3s ease;
-}
+} */
 
 .whatshot-card {
   flex: 0 0 auto;
@@ -570,16 +570,8 @@
   transition: padding 0.3s ease;
 }
 
-.slider-container::-webkit-scrollbar {
+.whatshot-slider-container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
-}
-
-.whatshot-details {
-  margin-top: 10px;
-  text-align: center; /* Center text */
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
 }
 
 .pictureperfect{
