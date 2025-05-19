@@ -874,5 +874,71 @@
     left: 866px;
 }
 
+.footer {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.footer1 {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: -40px;
+}
+
+.footer1 > div {
+  flex: 1;
+  min-width: 160px;
+  padding-bottom: 40px;
+  text-align: justify;
+}
+
+.footer1 p:first-child {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 19px;
+}
+
+.footer1 p {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #333;
+  cursor: pointer;
+}
+
+.footer1 p:hover {
+  text-decoration: underline;
+}
+
+.footer2 {
+  background-color: #222;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgb(171,173,178);
+}
+
+.footer2 > p:nth-child(2){
+  margin-top: 20px;
+}
+
+.instagram {
+  background-color: #333;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+
 
 
