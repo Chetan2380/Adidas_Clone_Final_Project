@@ -3,6 +3,7 @@ import Navbar from '../Navbar/Navbar';
 import '../Mens/Mens.css';
 import { HiArrowLongRight } from "react-icons/hi2";
 import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
+import { PiHeartStraight } from "react-icons/pi";
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330;
@@ -17,9 +18,43 @@ const Mens = () => {
     { itemimg: "https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_600,w_600/global_motorsports_motorsports_ss25_sustain_hp_catlp_glp_navigation_card_teaser_6_m_46decc9dc4.mp4", title: "Show Your Passion", desc: "The adidas x Mercedes-AMG PETRONAS F1 Fanwear collection.", category: "SHOP NOW" }
   ]);
 
+  const [supsambaitem, setSupsambaitem] = useState([
+    { itemimg: "https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_800,w_800/originals_ss25_the_original_hp_glp_w_superstar_tc_d_317b52fcb4.mp4", title: "Superstar", desc: "From the court to the street", category: "Shop now" },
+    { itemimg: "https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_800,w_800/originals_ss25_the_original_hp_glp_w_samba_tc_d_d32d7b5a5f.mp4", title: "Samba", desc: "Inspiring individuality in every step", category: "Shop now" },
+    { itemimg: "https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_800,w_800/originals_ss25_the_original_hp_glp_w_spezial_tc_d_697b719f61.mp4", title: "Spezial", desc: "A favourite for style tribes globally", category: "Shop now" },
+    { itemimg: "https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_800,w_800/originals_ss25_the_original_hp_glp_w_firebird_tc_d_091dd9e7cd.mp4", title: "Firebird", desc: "A celebration of sports heritage", category: "Shop now" }
+  ]);
+
+  const[adimertop,setAdimertop]=useState([{itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/f811b2df598e4254b4794f61e6ebb6f9_9366/Mercedes_-_AMG_Petronas_Formula_One_Team_Summer_Chino_Pant_Beige_JW3472_000_plp_model.jpg",price:"7 999.00",title:"Mercedes - AMG Petronas Formula One Team Summer Chino Pant",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/283c4b2348ce44aa9e7b3b4b0d221c02_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DRIVER_JERSEY_Black_JW5361_HM1.jpg",price:"5 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DRIVER JERSEY",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/f35256c62f8d4e068033705a0a1d226e_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DRIVER_JERSEY_White_JX5798_HM1.jpg",price:"5 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DRIVER JERSEY",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/b690857c2c164f1898795c7f542ae106_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DNA_PANT_Black_JV5379_000_plp_model.jpg",price:"5 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DNA PANT",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/d12492ac218942438f3b7f6969a19c96_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_POLO_Black_JW5391_000_plp_model.jpg",price:"6 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM POLO",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/3f064e5faf164bf38f3ba9191fb451fd_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DRIVER_JERSEY_AUTHENTIC_Black_JY2607_HM1.jpg",price:"8 599.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DRIVER JERSEY AUTHENTIC",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/7dfe622380bd4cfc94c32e20ce283fba_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_MECHANICS_JERSEY_Black_JX8245_HM1.jpg",price:"5 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM MECHANICS JERSEY",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/8a2b989a596b4eb0a9219c409154d232_9366/Mercedes_-_AMG_Petronas_Formula_One_Team_DNA_Track_Top_Black_JV5355_000_plp_model.jpg",price:"5 999.00",title:"Mercedes - AMG Petronas Formula One Team DNA Track Top",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/e1714ed565ea49749501ec69d7d037f5_9366/Mercedes_-_AMG_Petronas_Formula_One_Team_DNA_Tee_White_JV5457_000_plp_model.jpg",price:"2 499.00",title:"Mercedes - AMG Petronas Formula One Team DNA Tee",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/c6685c449da440858d8070f09517bce2_9366/ADIDAS_FEROZA_BASE_MERCEDES_AMG_PETRONAS_F1_TEAM_SHOES_Black_JQ3273_00_plp_standard.jpg",price:"8 999.00",title:"ADIDAS FEROZA BASE MERCEDES AMG PETRONAS F1 TEAM SHOES",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/e77e4d26bc88465eb01f278c7595716e_9366/Mercedes_-_AMG_Petronas_Formula_One_Team_DNA_Tee_Black_JV5425_000_plp_model.jpg",price:"2 499.00",title:"Mercedes - AMG Petronas Formula One Team DNA Tee",category:"Performance"},
+  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/af88fb35e5bd4836b9d46ae77c7c285e_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_POLO_White_JW0586_000_plp_model.jpg",price:"6 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM POLO",category:"Performance"}])
+  
+
   const sliderRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const totalPages = Math.ceil(adimertop.length / ITEMS_PER_PAGE);
+  const startIndex = currentPage * ITEMS_PER_PAGE;
+  const visibleClothes = adimertop.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const nextPage = () => {
+    if (currentPage < totalPages - 1) setCurrentPage(currentPage + 1);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) setCurrentPage(currentPage - 1);
+  };
 
   const handleScroll = (direction) => {
     if (!sliderRef.current) return;
@@ -122,6 +157,79 @@ const Mens = () => {
         </div>
         <div id="theracebeginshopnow2"></div>
       </div>
+
+      <div className="superstarsamba">
+        <div className="superstarsamba-cards-wrapper">
+            {supsambaitem.slice(0, 4).map((item, index) => (
+            <div className="superstarsamba-card" key={index}>
+                <div className="superstarsamba-hover-container">
+                <div className="superstarsamba-media">
+                    <video src={item.itemimg} muted autoPlay loop playsInline />
+                </div>
+                <div className="superstarsamba-details">
+                    <div className="superstarsamba-title">{item.title}</div>
+                    <div className="superstarsamba-desc">{item.desc}</div>
+                    <div className="superstarsamba-spacer"></div>
+                    <div className="superstarsamba-category">{item.category}</div>
+                </div>
+                </div>
+            </div>
+            ))}
+            </div>
+        </div>
+
+        <div className='adidaszne'>
+            <img src='https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_1920,w_1920/2880x1280_100_0911ab4b8d.jpg'/>
+            <div id="adidasznetext1">
+                <p>ADIDAS Z.N.E.</p>
+            </div>
+            <div id="adidasznetext2">
+                <p>The lines that connect us.</p>
+            </div>
+            <div id="adidaszneshopnow">
+                <div><p>SHOP NOW</p></div> <div><HiArrowLongRight  style={{color: "black", fontSize: "26px", fontWeight:"500px"}}/></div>
+            </div>
+            <div id="adidaszneshopnow2"></div>
+        </div>
+
+        <div className='adimertop'>
+            <div className='adimeramgcat'>
+                <div className='adimeramgcattext'>ADIDAS X MERCEDES-AMG PETRONAS F1</div>
+                <div className='adimeramgcattext2'>TOP PICKS FOR YOU</div>
+            </div>
+
+            <div className='slider-container2'>
+                <div className='cloths-slider-wrapper'>
+                <button onClick={prevPage} disabled={currentPage === 0} className='nav-arrow left'>
+                    <PiCaretLeftBold />
+                </button>
+
+                <div className="clothlist-wrapper">
+                    {visibleClothes.map((adimerclothes, index) => (
+                    <div className="differentcloths" key={index}>
+                        <div className="diffrentshoesimg">
+                        <img src={adimerclothes.itemimg} alt={adimerclothes.title} />
+                        <div id="heart">
+                            <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                        </div>
+                        </div>
+                        <div className="differentshoesprice">₹{adimerclothes.price}</div>
+                        <div className="differentshoestitle">{adimerclothes.title}</div>
+                        <div className="differentshoescategory">{adimerclothes.category}</div>
+                    </div>
+                    ))}
+                </div>
+
+                <button onClick={nextPage} disabled={currentPage === totalPages - 1} className='nav-arrow right'>
+                    <PiCaretRightBold />
+                </button>
+                </div>
+
+                <div className="progress-bar-container2">
+                <div className="progress-bar2" style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}></div>
+                </div>
+            </div>
+        </div>
     </div>
   );
 };

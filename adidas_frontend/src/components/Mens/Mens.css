@@ -311,3 +311,332 @@
     top: 545px;
     left: 114px;
 }
+
+.superstarsamba {
+  width: 86%;
+  margin:auto;
+  height: 600px;
+  margin-top: 60px;
+}
+
+.superstarsamba-cards-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.superstarsamba-card {
+  flex: 0 0 25%; /* 4 cards equally spaced */
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  object-fit: cover;
+}
+
+.superstarsamba-hover-container {
+  transition: border 0.3s ease;
+  border: 2px solid transparent;
+  padding: 2px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.superstarsamba-hover-container:hover {
+  border: 2px solid black;
+  background-color: #fff;
+}
+
+.superstarsamba-media {
+  height: 430px;
+  overflow: hidden;
+}
+
+.superstarsamba-media img,
+.superstarsamba-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.superstarsamba-details {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  height: 120px;
+  padding: 10px;
+  position: relative;
+  gap: 6px;
+}
+
+.superstarsamba-title {
+  font-weight: 600;
+  font-size: 16px;
+  width: 100%;
+  text-align: justify;
+}
+
+.superstarsamba-desc {
+  font-size: 15px;
+  color: #555;
+  width: 80%;
+  text-align: justify;
+}
+
+.superstarsamba-spacer {
+  flex: 1;
+}
+
+.superstarsamba-category {
+  font-size: 15px;
+  width: 80%;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  font-weight: 600;
+  text-align: justify;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 3.1px;
+}
+
+.adidaszne{
+    width: 100%;
+    height: 650px;
+    position: relative;
+}
+
+.adidaszne > img{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#adidasznetext1{
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 470px;
+    left: 110px;
+    background-color: white;
+    letter-spacing: 1px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#adidasznetext2{
+    width: 20%;
+    color: black;
+    font-size: 16px;
+    position: absolute;
+    top: 510px;
+    left: 110px;
+    background-color: white;
+    letter-spacing: 1px;
+    width:19%
+}
+
+#adidaszneshopnow{
+    width: 11%;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 550px;
+    left: 110px;
+    z-index: 1;
+}
+
+#adidaszneshopnow > div:nth-child(2){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+#adidaszneshopnow2{
+    width: 11%;
+    height: 50px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    top: 555px;
+    left: 114px;
+}
+
+.adimertop {
+  width: 86%;
+  height: 560px;
+  margin: auto;
+}
+
+.buytwoormoreshoestext {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-family: Arial, sans-serif;
+}
+
+.buytwoormoreshoestext1 {
+  font-size: 25px;
+  font-weight: bold;
+  color: #000;
+}
+
+.buytwoormoreshoestext2 {
+  font-size: 17px;
+  cursor: pointer;
+  border-bottom: 2px solid black;
+  font-weight: 600;
+}
+
+.adimeramgcat {
+  display: flex;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.adimeramgcat div {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: 100;
+  font-family: Arial, sans-serif;
+}
+
+.adimeramgcattext {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+.adimeramgcattext2 {
+  transition: all 0.3s ease;
+}
+
+.adimeramgcattext2:hover {
+  background-color: #f2f2f2;
+}
+
+.cloths-slider-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.clothlist-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.differentcloths {
+  width: 24.5%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.differentcloths:hover {
+  border: 1px solid black;
+  box-shadow: 0 0 0 1px white inset;
+}
+
+.diffrentshoesimg {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.diffrentshoesimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px;
+  z-index: 2;
+}
+
+.differentshoesprice {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.differentshoestitle {
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.differentshoescategory {
+  margin-top: 4px;
+  color: #888888;
+  font-size: 14px;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.nav-arrow.left {
+  left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-arrow.right {
+  right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.cloths-slider-wrapper:hover .nav-arrow {
+  opacity: 1;
+}
+
+.progress-bar-container2 {
+  width: 100%;
+  height: 5px;
+  background-color: #e0e0e0;
+  margin: 10px auto;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar2 {
+  height: 100%;
+  background-color: black;
+  transition: width 0.3s ease;
+}
