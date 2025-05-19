@@ -298,6 +298,14 @@ const [currentPage, setCurrentPage] = useState(0);
           <p>The adidas sports store is more than just a place to shop—it’s a space for creators to elevate their game and redefine what’s possible. Every item in our sports shop is crafted with performance, durability, and attention to detail in mind, helping you move with confidence. At adidas, we partner with the best in the industry to co-create, ensuring every piece of apparel supports movement, self-expression, and an active lifestyle. Wherever your sport takes you, our sports shop has you covered—helping you take every step toward greatness.</p>
           <img src='https://cdn.hyprop.co.za/image/2023/7/25/e6282914-7b4a-4a7a-9112-33abe479dd5a/e0803ee7-cdd8-4cde-ad38-a297e330ff75.jpg'/>
         </div>
+
+        <div className='joinadidas'>
+          <p>Join adidas and get 10% OFF</p>
+          <div id="signupforfree">
+            <div><p>SIGN UP FOR FREE</p></div> <div><HiArrowLongRight  style={{color: "white", fontSize: "26px", fontWeight:"500px"}}/></div>
+          </div>
+          <div id="signupforfree2"></div>
+        </div>
     </div>
   )
 }
