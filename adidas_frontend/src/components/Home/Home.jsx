@@ -277,6 +277,27 @@ const [currentPage, setCurrentPage] = useState(0);
             </div>
           </div>
         </div>
+
+        <div className='popularrightnow'>
+          <p>Popular right now</p>
+          <div className="popularrightnow-flex">
+            <div className='popularrightnowtext'>samba</div>
+            <div className='popularrightnowtext'>adizero</div>
+            <div className='popularrightnowtext'>spezial</div>
+            <div className='popularrightnowtext'>shoes</div>
+            <div className='popularrightnowtext'>bag</div>
+            <div className='popularrightnowtext'>cap</div>
+          </div>
+        </div>
+
+        <div className='adidasdesc'>
+          <h1>ADIDAS SPORTS SHOP FOR PERFORMANCE, STYLE & INNOVATION – SINCE 1949</h1>
+          <p>Sport keeps us fit. Keeps you mindful. Brings us together. Through sport, we have the power to change lives—through stories of inspiring athletes, innovative technology, and by helping you get up and move.</p>
+          <p>Find high-performance activewear and sportswear built with the latest technology to help you push your limits. Whether you’re a runner, a basketball player, a footballer, or someone who just loves to stay active, our sports shop is your home. We’re here to help you train harder, run faster, and go further, with products that keep up with your movement and support your goals.</p>
+          <p>Explore our online store for the latest adidas collections, where innovation meets style. From the yoga teacher spreading the joy of movement to the weekend hiker escaping the city, we support everyone striving to be their best. The sports shop at adidas offers performance gear for all levels—whether you’re an elite athlete, a fitness enthusiast, or just starting your journey. Our online store ensures that wherever you are, you can access the latest gear designed for movement.</p>
+          <p>The adidas sports store is more than just a place to shop—it’s a space for creators to elevate their game and redefine what’s possible. Every item in our sports shop is crafted with performance, durability, and attention to detail in mind, helping you move with confidence. At adidas, we partner with the best in the industry to co-create, ensuring every piece of apparel supports movement, self-expression, and an active lifestyle. Wherever your sport takes you, our sports shop has you covered—helping you take every step toward greatness.</p>
+          <img src='https://cdn.hyprop.co.za/image/2023/7/25/e6282914-7b4a-4a7a-9112-33abe479dd5a/e0803ee7-cdd8-4cde-ad38-a297e330ff75.jpg'/>
+        </div>
     </div>
   )
 }
