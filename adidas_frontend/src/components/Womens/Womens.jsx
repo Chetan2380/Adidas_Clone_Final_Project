@@ -187,6 +187,48 @@ const Womens = () => {
           </div>
         </div>
       </div>
+
+      <div className='womensclothdesc'>
+        <h1>WOMEN’S CLOTHING & SHOES</h1>
+        <p>In sport and in life, creators aren’t content on the sidelines. adidas women’s shoes and apparel are made for those who understand that rules can be negotiated; expectations, evolved. Reach for a new personal best in apparel made of specialized performance fabrics. Accentuate your personal style in sport-inspired sneakers for your day-to-day. Whether sport is your life or you’re an athleisure fashionista, women’s clothing and footwear from adidas exist to help you redefine what’s possible.</p>
+      </div>
+
+      <div className='menscategories'>
+          <div className='menscategories2'>
+            <div className='mens-shoes'>
+              <p>WOMEN'S SHOES</p>
+              <p>Women's Shoes</p>
+              <p>Women's Sneakers</p>
+              <p>Women's Flip Flops</p>
+              <p>Women's White Sneakers</p>
+              <p>Women's Black Sneakers</p>
+            </div>
+            <div className='mens-clothing'>
+              <p>WOMEN'S CLOTHING</p>
+              <p>Women's Sports Bra</p>
+              <p>Women's Hoodies</p>
+              <p>Women's Jackets</p>
+              <p>Women's Tracksuits</p>
+              <p>Women's T-Shirts</p>
+            </div>
+            <div className='mens-accessories'>
+              <p>WOMEN'S ACCESSORIES</p>
+              <p>Women's Backpacks</p>
+              <p>Women's Bags</p>
+              <p>Women's Socks</p>
+              <p>Women's Hat</p>
+              <p>Women's Training Bag</p>
+            </div>
+            <div className='mens-collections'>
+              <p>WOMEN'S COLLECTIONS</p>
+              <p>Women's Running Shoes</p>
+              <p>Women's Football Shoes</p>
+              <p>Women's Walking Shoes</p>
+              <p>Women's Training Shoes</p>
+              <p>Women's Cricket Shoes</p>
+            </div>
+          </div>
+        </div>
       <Footer/>
     </div>
   )
