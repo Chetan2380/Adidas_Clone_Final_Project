@@ -22,7 +22,7 @@ const Navbar = () => {
                         <span>SHOES</span>
                         <span onClick={()=>router("/men")}>MEN</span>
                         <span onClick={()=>router("/women")}>WOMEN</span>
-                        <span>KIDS</span>
+                        <span onClick={()=>router("/kids")}>KIDS</span>
                         <span>SPORTS & LIFESTYLE</span>
                         <span>OUTLET</span>
                     </div>
