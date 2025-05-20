@@ -12,7 +12,7 @@ const Navbar = () => {
     const router=useNavigate();
   const location = useLocation();
 
-  const hideNavbar3Routes = ["/men", "/women", "/kids"];
+  const hideNavbar3Routes = ["/men", "/women", "/kids", "/sign-in"];
   const hideNavbar3 = hideNavbar3Routes.includes(location.pathname);
   return (
     <div>
@@ -43,7 +43,7 @@ const Navbar = () => {
                             <span>Search</span><IoSearch style={{color: "black", fontSize: "22px", fontWeight:"500px"}}/>
                         </div>
                         <div className="cartprof">
-                            <div onClick={()=>router("/login")}><h3><RiUser3Line  style={{color: "black", fontSize: "22px", fontWeight:"500px"}}/></h3></div>
+                            <div onClick={()=>router("/sign-in")}><h3><RiUser3Line  style={{color: "black", fontSize: "22px", fontWeight:"500px"}}/></h3></div>
                             <div><PiHeartStraight  style={{color: "black", fontSize: "22px", fontWeight:"500px"}}/></div>
                             <div onClick={()=>router("/cart")}><MdOutlineShoppingBag  style={{color: "black", fontSize: "22px", fontWeight:"500px"}}/></div>
                         </div>
