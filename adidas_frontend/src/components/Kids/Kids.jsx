@@ -65,6 +65,10 @@ const Kids = () => {
   return (
     <div>
         <Navbar/>
+        <div className='kidsnav'>
+            <p>BROWSE ALL PRODUCTS FOR KIDS</p>
+        </div>
+        
         <div className="whatsnew3">
         <div className="whatsnew3-header">
           <h2>WHAT'S HOT ?</h2>

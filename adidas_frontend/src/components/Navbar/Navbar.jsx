@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
 import { RiUser3Line } from "react-icons/ri";
 import { PiHeartStraight } from "react-icons/pi";
@@ -10,6 +10,10 @@ import "../Navbar/Navbar.css"
 
 const Navbar = () => {
     const router=useNavigate();
+  const location = useLocation();
+
+  const hideNavbar3Routes = ["/men", "/women", "/kids"];
+  const hideNavbar3 = hideNavbar3Routes.includes(location.pathname);
   return (
     <div>
         <div className="Navbar">
@@ -46,7 +50,14 @@ const Navbar = () => {
                     </div>
                 </div>
         </div>
-        <div className="Navbar3"><div>Buy 2, Save an extra 20%! Exclusive Offer on Curated Picks this May!</div><div><span><HiArrowLongRight  style={{color: "black", fontSize: "26px", fontWeight:"500px"}}/></span></div></div>
+        {!hideNavbar3 && (
+        <div className="Navbar3">
+          <div>Buy 2, Save an extra 20%! Exclusive Offer on Curated Picks this May!</div>
+          <div>
+            <span><HiArrowLongRight style={{ color: "black", fontSize: "26px", fontWeight:"500" }} /></span>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

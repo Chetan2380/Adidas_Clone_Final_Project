@@ -357,3 +357,17 @@
 .kidscategories2 p:hover {
   text-decoration: underline;
 }
+
+.kidsnav{
+    height: 50px;
+    /* border: 2px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 400;
+    color: black;
+    background-color: rgb(236,239,241);
+    letter-spacing: 2px;
+  }

@@ -74,6 +74,9 @@ const Mens = () => {
   return (
     <div>
       <Navbar />
+      <div className='womensnav'>
+        <p>BROWSE ALL PRODUCTS FOR MENS</p>
+      </div>
       <div className='supernovarise2'>
         <img src='https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_1920,w_1920/global_supernova_running_ss25_early_access_mglp_banner_hero_d_78b800effe.jpg' />
         <div id="supernovarise2text1">
