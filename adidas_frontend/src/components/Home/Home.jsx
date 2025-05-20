@@ -5,6 +5,7 @@ import { HiArrowLongRight } from "react-icons/hi2";
 import { PiHeartStraight } from "react-icons/pi";
 import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 import { FaInstagram } from "react-icons/fa";
+import Footer from '../Footer/Footer';
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330; // width of one card
@@ -294,80 +295,7 @@ const [currentPage, setCurrentPage] = useState(0);
           <p>The adidas sports store is more than just a place to shop—it’s a space for creators to elevate their game and redefine what’s possible. Every item in our sports shop is crafted with performance, durability, and attention to detail in mind, helping you move with confidence. At adidas, we partner with the best in the industry to co-create, ensuring every piece of apparel supports movement, self-expression, and an active lifestyle. Wherever your sport takes you, our sports shop has you covered—helping you take every step toward greatness.</p>
           <img src='https://cdn.hyprop.co.za/image/2023/7/25/e6282914-7b4a-4a7a-9112-33abe479dd5a/e0803ee7-cdd8-4cde-ad38-a297e330ff75.jpg'/>
         </div>
-
-        <div className='joinadidas'>
-          <p>Join adidas and get 10% OFF</p>
-          <div id="signupforfree">
-            <div><p>SIGN UP FOR FREE</p></div> <div><HiArrowLongRight  style={{color: "white", fontSize: "26px", fontWeight:"500px"}}/></div>
-          </div>
-          <div id="signupforfree2"></div>
-        </div>
-
-        <div className='footer'>
-          <div className='footer1'>
-            <div className='products'>
-              <p>PRODUCTS</p>
-              <p>Footwear</p>
-              <p>Clothing</p>
-              <p>Accessories</p>
-              <p>Outlet-Sale</p>
-              <p>New Arrivals</p>
-              <p>Flat 50% Off!</p>
-            </div>
-            <div className='sports'>
-              <p>SPORTS</p>
-              <p>CRICKET</p>
-              <p>Running</p>
-              <p>Football</p>
-              <p>Gym/Training</p>
-              <p>Tennis</p>
-              <p>Outdoor</p>
-              <p>Basketball</p>
-              <p>Swimming</p>
-              <p>Skateboarding</p>
-              <p>Motosport</p>
-            </div>
-            <div className='collections'>
-              <p>COLLECTIONS</p>
-              <p>Ultraboost</p>
-              <p>Superstar</p>
-              <p>NMD</p>
-              <p>Stan Smith</p>
-              <p>Sustainability</p>
-              <p>Predator</p>
-              <p>Parley</p>
-              <p>Adicolor</p>
-            </div>
-            <div className='support'>
-              <p>SUPPORT</p>
-              <p>Help</p>
-              <p>Customer Services</p>
-              <p>Returns & Exchanges</p>
-              <p>Shipping</p>
-              <p>Order Tracker</p>
-              <p>Store Finder</p>
-              <p>adiClub</p>
-              <p>adiclub Terms and conditions</p>
-            </div>
-            <div className='companyinfo'>
-              <p>COMPANY INFO</p>
-              <p>About Us</p>
-              <p>adidas stories</p>
-              <p>adidas Apps</p>
-              <p>Entity Details</p>
-              <p>Press</p>
-              <p>Careers</p>
-            </div>
-            <div className='folloeus'>
-              <p>FOLLOW US</p>
-              <div className='instagram'><FaInstagram style={{color:"white"}}/></div>
-            </div>
-          </div>
-          <div className='footer2'>
-            <p>Privacy Policy  |  Terms and Conditions  |  Cookies</p>
-            <p>©2024 adidas India Marketing Pvt. Ltd</p>
-          </div>
-        </div>
+        <Footer/>
     </div>
   )
 }

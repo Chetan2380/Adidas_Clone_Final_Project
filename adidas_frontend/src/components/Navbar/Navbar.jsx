@@ -20,8 +20,8 @@ const Navbar = () => {
                     <div id='leftnavbarimg' onClick={()=>router("/")}><img alt="icon" src="https://static.vecteezy.com/system/resources/previews/010/994/239/non_2x/adidas-logo-black-symbol-clothes-design-icon-abstract-football-illustration-with-white-background-free-vector.jpg"/></div>
                     <div className='leftNavbar2_1'>
                         <span>SHOES</span>
-                        <span onClick={()=>router("/mens")}>MEN</span>
-                        <span>WOMEN</span>
+                        <span onClick={()=>router("/men")}>MEN</span>
+                        <span onClick={()=>router("/women")}>WOMEN</span>
                         <span>KIDS</span>
                         <span>SPORTS & LIFESTYLE</span>
                         <span>OUTLET</span>

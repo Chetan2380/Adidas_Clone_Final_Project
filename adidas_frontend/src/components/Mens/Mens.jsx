@@ -4,6 +4,7 @@ import '../Mens/Mens.css';
 import { HiArrowLongRight } from "react-icons/hi2";
 import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 import { PiHeartStraight } from "react-icons/pi";
+import Footer from '../Footer/Footer';
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330;
@@ -230,6 +231,49 @@ const Mens = () => {
                 </div>
             </div>
         </div>
+
+        <div className='mensclothdesc'>
+          <h1>MEN’S CLOTHING & SHOES</h1>
+          <p>As a creator, you look for ways to excel and express yourself when and where you can, from reaching for that last rep to evolving your streetwear style. Log miles or tear down the baseline in men's shoes with responsive cushioning. Rep an athletic style off the field in lifestyle apparel born of sport heritage. From athletes to streetwear enthusiasts, adidas men’s clothing and shoes exist to let you go harder, dig deeper, and get the most out of yourself, from the pitch to the street to the road less traveled.</p>
+        </div>
+        
+        <div className='menscategories'>
+          <div className='menscategories2'>
+            <div className='mens-shoes'>
+              <p>MEN'S SHOES</p>
+              <p>Men's Shoes</p>
+              <p>Men's Sneakers</p>
+              <p>Men's Sandals</p>
+              <p>Men's White Shoes</p>
+              <p>Men's Black Shoes</p>
+            </div>
+            <div className='mens-clothing'>
+              <p>MEN'S CLOTHING</p>
+              <p>Football Jerseys</p>
+              <p>Men's Hoodies</p>
+              <p>Men's Jackets</p>
+              <p>Men's Tracksuits</p>
+              <p>Men's T-Shirts</p>
+            </div>
+            <div className='mens-accessories'>
+              <p>MEN'S ACCESSORIES</p>
+              <p>Men's Backpacks</p>
+              <p>Men's Bags</p>
+              <p>Men's Socks</p>
+              <p>Men's Hat</p>
+              <p>Men's Training Bag</p>
+            </div>
+            <div className='mens-collections'>
+              <p>MEN'S COLLECTIONS</p>
+              <p>Men's Running Shoes</p>
+              <p>Men's Football Shoes</p>
+              <p>Men's Walking Shoes</p>
+              <p>Men's Training Shoes</p>
+              <p>Men's Cricket Shoes</p>
+            </div>
+          </div>
+        </div>
+        <Footer/>
     </div>
   );
 };

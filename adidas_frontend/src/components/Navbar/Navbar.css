@@ -76,6 +76,10 @@
     margin-bottom: 13px;
   }
 
+  .leftNavbar2_1 > span{
+    cursor: pointer;
+  }
+
   #leftnavbarimg{
     width: 8%;
     height: 100%;

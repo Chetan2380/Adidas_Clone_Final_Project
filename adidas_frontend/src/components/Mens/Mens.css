@@ -478,6 +478,7 @@
   width: 86%;
   height: 560px;
   margin: auto;
+  margin-top: 50px;
 }
 
 .buytwoormoreshoestext {
@@ -639,4 +640,66 @@
   height: 100%;
   background-color: black;
   transition: width 0.3s ease;
+}
+
+.mensclothdesc {
+  width: 37%;
+  margin: auto;
+  font-family: Arial, sans-serif;
+  color: #111;
+  text-align: center;
+  height: 300px;
+}
+
+.mensclothdesc h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.mensclothdesc p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+}
+
+
+.menscategories {
+  width: 86%;
+  height: 360px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+.menscategories2 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.menscategories2 > div {
+  flex: 1 1 200px; /* allows flexibility and wrapping */
+  min-width: 200px;
+}
+
+.menscategories2 p:first-child {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.menscategories2 p {
+  font-size: 14px;
+  color: #333;
+  margin: 5px 0;
+  cursor: pointer;
+  margin-top: 26px;
+  text-align: justify;
+}
+
+.menscategories2 p:hover {
+  text-decoration: underline;
 }
