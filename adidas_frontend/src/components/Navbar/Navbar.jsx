@@ -36,14 +36,14 @@ const Navbar = () => {
                         <span>help</span>
                         <span>orders and returns</span>
                         <span>sign up</span>
-                        <span>log in</span>
+                        <span onClick={()=>router("/sign-in")}>log in</span>
                     </div>
                     <div className='rightNavbar2_2'>
                         <div className="search">
                             <span>Search</span><IoSearch style={{color: "black", fontSize: "22px", fontWeight:"500px"}}/>
                         </div>
                         <div className="cartprof">
-                            <div onClick={()=>router("/sign-in")}><h3><RiUser3Line  style={{color: "black", fontSize: "22px", fontWeight:"500px"}}/></h3></div>
+                            <div><h3><RiUser3Line  style={{color: "black", fontSize: "22px", fontWeight:"500px"}}/></h3></div>
                             <div><PiHeartStraight  style={{color: "black", fontSize: "22px", fontWeight:"500px"}}/></div>
                             <div onClick={()=>router("/cart")}><MdOutlineShoppingBag  style={{color: "black", fontSize: "22px", fontWeight:"500px"}}/></div>
                         </div>
