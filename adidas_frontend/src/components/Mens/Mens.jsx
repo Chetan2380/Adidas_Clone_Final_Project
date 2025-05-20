@@ -94,7 +94,7 @@ const Mens = () => {
 
       <div className='whatshot2'>
         <div className="whatshot2-header">
-          <h2>SELECT YOUR SPORT, FIND YOUR GEAR, AND GET IN THE GAME !</h2>
+          <h2>WHAT'S HOT ?</h2>
         </div>
 
         <div
@@ -236,7 +236,7 @@ const Mens = () => {
           <h1>MEN’S CLOTHING & SHOES</h1>
           <p>As a creator, you look for ways to excel and express yourself when and where you can, from reaching for that last rep to evolving your streetwear style. Log miles or tear down the baseline in men's shoes with responsive cushioning. Rep an athletic style off the field in lifestyle apparel born of sport heritage. From athletes to streetwear enthusiasts, adidas men’s clothing and shoes exist to let you go harder, dig deeper, and get the most out of yourself, from the pitch to the street to the road less traveled.</p>
         </div>
-        
+
         <div className='menscategories'>
           <div className='menscategories2'>
             <div className='mens-shoes'>

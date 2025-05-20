@@ -583,17 +583,23 @@
   margin-top: 10px;
   font-weight: bold;
   font-size: 16px;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .differentshoestitle {
   margin-top: 5px;
   font-size: 15px;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .differentshoescategory {
   margin-top: 4px;
   color: #888888;
   font-size: 14px;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .nav-arrow {
@@ -634,6 +640,7 @@
   margin: 10px auto;
   border-radius: 2px;
   overflow: hidden;
+  margin-top: 50px;
 }
 
 .progress-bar2 {
