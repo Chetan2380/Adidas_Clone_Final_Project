@@ -7,12 +7,12 @@ const Footer = () => {
   return (
     <div>
         <div className='joinadidas'>
-                  <p>Join adidas and get 10% OFF</p>
-                  <div id="signupforfree">
-                    <div><p>SIGN UP FOR FREE</p></div> <div><HiArrowLongRight  style={{color: "white", fontSize: "26px", fontWeight:"500px"}}/></div>
-                  </div>
-                  <div id="signupforfree2"></div>
-                </div>
+            <p>Join adidas and get 10% OFF</p>
+            <div id="signupforfree">
+                <div><p>SIGN UP FOR FREE</p></div> <div><HiArrowLongRight  style={{color: "white", fontSize: "26px", fontWeight:"500px"}}/></div>
+            </div>
+            <div id="signupforfree2"></div>
+        </div>
         <div className='footer'>
             <div className='footer1'>
                 <div className='products'>
