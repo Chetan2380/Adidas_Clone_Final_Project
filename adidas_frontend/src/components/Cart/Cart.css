@@ -68,15 +68,20 @@
 
 .product-card {
   display: flex;
-  gap: 20px;
-  border-top: 1px solid #ccc;
-  padding-top: 20px;
-  min-height: 180px; /* Increased height */
+  border: 1px solid black;
+  height: 220px;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.product-card-left {
+  width: 30%;
 }
 
 .product-card-left img {
-  width: 150px;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .product-card-right {
@@ -84,45 +89,71 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 16px 20px;
+  position: relative;
 }
 
-.title-price-color-size {
+/* Top Row: Title & Right Price + Icons */
+.title-price-row {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.product-title p {
+.product-title {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 70%;
 }
 
-.product-color, .product-size {
-  font-size: 14px;
-  color: #555;
+.product-size{
+    margin-top: 15px;
 }
 
 .price-cross-heart {
   display: flex;
-  /* align-items: center; */
-  justify-content: space-between;
-  /* margin-top: 12px; */
-  gap: 12px;
+  /* flex-direction: column; */
+  /* align-items: flex-end; */
+  gap: 10px;
 }
 
-.price p {
+.price {
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
 }
 
 .cross-heart {
   display: flex;
-  gap: 12px;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
   cursor: pointer;
 }
+
+/* Bottom Row: Color, Size, Quantity */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  /* gap: 6px;
+  margin-top: 8px; */
+  color: #555;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid grey;
+  padding: 8px;
+  width: 90px;
+  height: 50px;
+  cursor: pointer;
+  gap: 8px;
+  font-size: 16px;
+}
+
+
 
 /* Top Picks */
 .toppicksforyoutext p {
@@ -137,8 +168,19 @@
 }
 
 .toppicksforyouimg {
-  width: 140px;
+  width: 180px;
   text-align: center;
+  border: 1px solid transparent;
+  transition: border 0.3s ease;
+}
+
+.toppicksforyouimg:hover {
+  border: 1px solid black;
+}
+
+/* Move the price-overlay up on hover */
+.toppicksforyouimg:hover .price-overlay {
+  transform: translateY(-5px);
 }
 
 .toppick-img-container {
@@ -152,14 +194,14 @@
 
 .heart-icon {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 24px;
+  right: 24px;
   font-size: 20px;
   color: black;
 }
 
 .price-overlay {
-  position: absolute;
+   position: absolute;
   bottom: 8px;
   left: 8px;
   background-color: white;
@@ -167,6 +209,7 @@
   font-size: 14px;
   padding: 2px 6px;
   border-radius: 4px;
+  transition: transform 0.3s ease;
 }
 
 
@@ -176,11 +219,16 @@
 }
 
 .freedelretsafe p {
-  font-size: 14px;
-  margin-bottom: 6px;
+  font-size: 16px;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   gap: 8px;
+  text-decoration: underline;
+}
+
+.cart-right{
+    position: relative;
 }
 
 /* Order Summary */
@@ -204,6 +252,10 @@
   text-align: left;
 }
 
+.order-summary-left p:nth-child(4){
+    color: grey;
+}
+
 /* Promo Code */
 .promo-code {
   display: flex;
@@ -218,23 +270,39 @@
   border-radius: 4px;
 }
 
-/* Checkout */
-.checkout {
+
+
+#checkout {
+  width: 100%;
+  height: 50px;
   background-color: black;
   color: white;
-  padding: 12px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 20px;
-  cursor: pointer;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  padding: 20px;
 }
+
+#checkout > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
 
 .checkout-text span {
   font-size: 16px;
+}
+
+.checkout2{
+    border: 1px solid black;
+  width: 100%;
+    height: 50px;
+    position: absolute;
+    top: 272px;
+    left: 3px;
 }
 
 .payment{
@@ -247,34 +315,4 @@
   height: 24px;
   margin-right: 10px;
   margin-top: 20px;
-}
-
-.quantity {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid grey;
-  padding: 4px 8px;
-  width: 70px;
-  height: 36px;
-  margin-top: 8px;
-  cursor: pointer;
-}
-
-#checkout {
-  width: 100%;
-  height: 50px;
-  background-color: black;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-}
-
-#checkout > div:nth-child(2) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10px;
 }

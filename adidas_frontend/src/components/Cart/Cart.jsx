@@ -54,25 +54,31 @@ const Cart = () => {
           <div className='product-card-left'>
             <img src='https://assets.adidas.com/images/w_600,f_auto,q_auto/fa68e9d5930c4f0db2832cef8f50d7ed_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DRIVER_JERSEY_JW5362_HM1.jpg?sh=364&strip=false&sw=364' alt='product' />
           </div>
-          <div className='product-card-right'>
-            <div className='title-price-color-size'>
-              <div className='title-color-size'>
-                <div className='product-title'><p>MERCEDES - AMG PETRONAS FORMULA ONE TEAM DRIVER JERSEY Black / White</p></div>
-                <div className='product-color'>BLACK/WHITE</div>
-                <div className='product-size'>SIZE: L</div>
-                <div className='quantity'>
-                    <span>1</span><FaAngleDown />
+          <div class="product-card-right">
+            <div class="title-price-row">
+                <div class="product-title">
+                    <p>MERCEDES - AMG PETRONAS FORMULA ONE TEAM DRIVER JERSEY</p>
+                    <div class="product-color">BLACK / WHITE</div>
+                    <div class="product-size">SIZE: L</div>
                 </div>
-              </div>
-              <div className='price-cross-heart'>
-                <div className='price'><p>₹5 999.00</p></div>
-                <div className='cross-heart'>
-                  <RxCross2 size={24} />
-                  <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                
+
+                <div class="price-cross-heart">
+                    <div class="price">₹5,999.00</div>
+                    <div class="cross-heart">
+                        <RxCross2 size={24} />
+                        <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                    </div>
                 </div>
-              </div>
+                </div>
+
+                <div class="product-info">
+                    <div class="quantity">
+                        <span>1</span>
+                        <span><FaAngleDown /></span>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
 
         {/* Top Picks */}
@@ -127,6 +133,7 @@ const Cart = () => {
             <div>CHECKOUT</div>
             <div><HiArrowLongRight style={{ fontSize: "26px" }} /></div>
         </div>
+        <div className='checkout2'></div>
 
 
         <div className='payment'>
