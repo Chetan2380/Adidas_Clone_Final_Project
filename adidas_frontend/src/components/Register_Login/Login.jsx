@@ -38,7 +38,7 @@ const Login = () => {
             <strong>Log in or sign up (it’s free)</strong>
 
             <div className='social-icons'>
-            <button><FcGoogle /></button>
+            <a href="http://localhost:8000/api/v1/auth/google"><button><FcGoogle /></button></a>
             <button><FaFacebook /></button>
             <button><BsApple /></button>
             </div>

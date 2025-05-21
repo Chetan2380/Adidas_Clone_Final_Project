@@ -1,25 +1,24 @@
-import cookieParser from "cookie-parser";
 import express from "express";
-import morgan from "morgan";
 import dotenv from "dotenv";
+import "./passportConfig.js";
+import cookieParser from "cookie-parser";
+import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
 import AllRoutes from "./routes/index.js"
 import session from 'express-session';
+import passport from "passport";
 const app = express();
 app.use(cookieParser());
 app.use(morgan("combined"));
 app.use(
   cors({
     credentials: true,
-    origin: ["https://recipe-sharing-platform-sand.vercel.app"],
+    origin: ["http://localhost:3000"],
   })
 );
 dotenv.config();
 app.use(express.json());
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(session({
   secret: 'MYSECRETKEY',
@@ -28,6 +27,8 @@ app.use(session({
   cookie: { secure: true, sameSite: 'None' }
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/", function (req, res) {
   res.send("working.");

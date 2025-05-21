@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config(); // ✅ Load .env before using env variables
+
 import passport from "passport";
 import GoogleStrategy from "passport-google-oauth20";
 import FacebookStrategy from "passport-facebook";
@@ -14,13 +17,13 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-// Google OAuth Strategy
+// Google strategy
 passport.use(
   new GoogleStrategy.Strategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
+      callbackURL: "/api/v1/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -32,7 +35,7 @@ passport.use(
             name: profile.displayName,
             email: profile.emails[0].value,
             photo: profile.photos[0].value,
-            password: "", // no password for OAuth users
+            password: "",
           });
         }
         return done(null, user);
@@ -42,6 +45,8 @@ passport.use(
     }
   )
 );
+console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
+console.log("GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET);
 
 // Facebook OAuth Strategy
 passport.use(
@@ -49,7 +54,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: "/auth/facebook/callback",
+      callbackURL: "/api/v1/auth/facebook/callback",
       profileFields: ["id", "displayName", "photos", "email"],
     },
     async (accessToken, refreshToken, profile, done) => {
@@ -79,7 +84,7 @@ passport.use(
     {
       clientID: process.env.APPLE_CLIENT_ID,
       teamID: process.env.APPLE_TEAM_ID,
-      callbackURL: "/auth/apple/callback",
+      callbackURL: "/api/v1/auth/apple/callback",
       keyID: process.env.APPLE_KEY_ID,
       privateKeyString: process.env.APPLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
       passReqToCallback: false,
