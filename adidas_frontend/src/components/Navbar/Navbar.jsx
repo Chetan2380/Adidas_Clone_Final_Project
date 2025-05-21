@@ -14,7 +14,7 @@ const Navbar = () => {
   const location = useLocation();
   const [showPopup, setShowPopup] = useState(false); // Popup state
 
-  const hideNavbar3Routes = ["/men", "/women", "/kids", "/sign-in"];
+  const hideNavbar3Routes = ["/men", "/women", "/kids", "/sign-in","/cart"];
   const hideNavbar3 = hideNavbar3Routes.includes(location.pathname);
 
   return (

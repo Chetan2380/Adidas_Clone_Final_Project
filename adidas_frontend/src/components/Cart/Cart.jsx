@@ -5,6 +5,8 @@ import { GoCheckCircle } from "react-icons/go";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { FaAngleDown } from "react-icons/fa6";
 import "../Cart/Cart.css";
+import Navbar from '../Navbar/Navbar'
+import Footer from '../Footer/Footer'
 
 const Cart = () => {
   const [toppicks] = useState([
@@ -31,6 +33,8 @@ const Cart = () => {
   ]);
 
   return (
+    <div>
+        <Navbar />
     <div className='cart-container'>
       {/* Left Section */}
       <div className='cartleft'>
@@ -147,6 +151,8 @@ const Cart = () => {
           </div>
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 };

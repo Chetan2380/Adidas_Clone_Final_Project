@@ -2,19 +2,23 @@ import React from 'react'
 import { FaInstagram } from "react-icons/fa";
 import { HiArrowLongRight } from "react-icons/hi2";
 import "../Footer/Footer.css"
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation();
+  const hideFooter1Routes = ["/cart"];
+  const hideFooter1 = hideFooter1Routes.includes(location.pathname);
   return (
     <div>
-        <div className='joinadidas'>
+         {!hideFooter1 && (<div className='joinadidas'>
             <p>Join adidas and get 10% OFF</p>
             <div id="signupforfree">
                 <div><p>SIGN UP FOR FREE</p></div> <div><HiArrowLongRight  style={{color: "white", fontSize: "26px", fontWeight:"500px"}}/></div>
             </div>
             <div id="signupforfree2"></div>
-        </div>
+        </div>)}
         <div className='footer'>
-            <div className='footer1'>
+            {!hideFooter1 && (<div className='footer1'>
                 <div className='products'>
                     <p>PRODUCTS</p>
                     <p>Footwear</p>
@@ -72,7 +76,7 @@ const Footer = () => {
                     <p>FOLLOW US</p>
                     <div className='instagram'><FaInstagram style={{color:"white"}}/></div>
                 </div>
-            </div>
+            </div> )}
             <div className='footer2'>
                 <p>Privacy Policy  |  Terms and Conditions  |  Cookies</p>
                 <p>©2024 adidas India Marketing Pvt. Ltd</p>
