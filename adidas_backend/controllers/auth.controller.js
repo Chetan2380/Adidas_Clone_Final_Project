@@ -5,8 +5,8 @@ import jwt from "jsonwebtoken";
 
 export const Register = async (req, res) => {
     try {
-      const { name, email, password } = req.body.userData;
-      if (!name || !email || !password) {
+      const {  email, password } = req.body.userData;
+      if (!email || !password) {
         return res.json({ success: false, error: "All fields are required." });
       }
 
@@ -22,7 +22,6 @@ export const Register = async (req, res) => {
       const encryptedPassword = await bcrypt.hash(password, 10);
   
       const newUser = new User({
-        name: name,
         email: email,
         password: encryptedPassword,
       });
@@ -41,7 +40,7 @@ export const Register = async (req, res) => {
 
 export const Login = async (req, res) => {
     try {
-      const { email, password } = req.body?.userData;
+      const { email, password } = req.body;
       if (!email || !password) {
         return res.json({ success: false, error: "All fields are required." });
       }
@@ -60,7 +59,6 @@ export const Login = async (req, res) => {
         return res.json({ success: false, error: "Password is wrong." });
       }
       const userData = {
-        name: isUserExists.name,
         email: isUserExists.email,
         role: "user",
         userId : isUserExists._id
@@ -82,7 +80,7 @@ export const Login = async (req, res) => {
         userData,
       });
     } catch (error) {
-      return res.json({ success: falsse, error: error });
+      return res.json({ success: false, error: error });
     }
   };
 
@@ -110,7 +108,6 @@ export const Login = async (req, res) => {
           return res.json({ success: false });
         }
         const userData = {
-          name: user.name,
           email: user.email,
           role: "user",
           userId: user._id,

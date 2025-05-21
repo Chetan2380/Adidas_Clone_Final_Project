@@ -7,113 +7,88 @@ body, html {
   font-family: Arial, sans-serif;
 }
 
-.login-container {
-    margin: auto;
+.register-container {
+  margin: auto;
   display: flex;
   width: 86%;
-  height: 800px;
+  height: 850px;
   margin-top: 50px;
 }
 
-.login-left, .login-right {
+.register-left, .register-right {
   width: 50%;
   padding: 30px;
   position: relative;
   text-align: left;
 }
 
-.login-left img {
+.register-left img {
   width: 100%;
   margin-bottom: 30px;
 }
 
-.join-club h1 {
-    width: 80%;
+.register-join-club h1 {
+  width: 80%;
   font-size: 36px;
   font-weight: bold;
   text-align: left;
 }
 
-.join-club p {
+.register-join-club p {
   text-align: left;
 }
 
-.join-club ul {
+.register-join-club ul {
   list-style: none;
   padding: 0;
   margin-left: 10px;
 }
 
-.join-club ul li {
+.register-join-club ul li {
   margin: 10px 0;
   display: flex;
   align-items: center;
   font-size: 16px;
 }
 
-.join-club ul li svg {
+.register-join-club ul li svg {
   margin-right: 8px;
   color: black;
 }
 
-.join-description {
+.register-join-description {
   margin-top: 15px;
   font-size: 14px;
   color: #555;
 }
 
-.adiclub-logo {
+.register-adiclub-logo {
   width: 180px;
   margin-bottom: 20px;
   display: flex;
-
 }
 
-.login-right h2 {
+.register-right h2 {
   font-size: 26px;
   font-weight: bold;
   text-align: left;
 }
 
-.subtext {
+.register-subtext {
   margin: 10px 0 20px;
   font-size: 14px;
   text-align: left;
 }
 
-.login-row-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 15px 0;
-  font-size: 14px;
-  flex-wrap: wrap;
-}
-
-.login-row-info strong {
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.login-create-link {
-  font-size: 16px;
-}
-
-.login-create-link span {
-  color: rgb(0, 162, 255);
-  text-decoration: underline;
-  font-weight: 700;
-}
-
-.social-icons {
+.register-social-icons {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
   margin-top: 20px;
 }
 
-.social-icons button {
-    width: 9%;
+.register-social-icons button {
+  width: 9%;
   border: 1px solid #000;
   padding: 10px;
   background-color: white;
@@ -121,22 +96,22 @@ body, html {
   font-size: 20px;
 }
 
-.input-field {
+.register-input-field {
   width: 100%;
   padding: 20px;
-  margin: 20px 0;
+  margin-top: 10px;
   border: 1px solid #000;
   font-size: 14px;
 }
 
-.checkbox-group {
+.register-checkbox-group {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-top: 20px;
 }
 
-.checkbox-group label {
+.register-checkbox-group label {
   display: flex;
   align-items: flex-start;
   font-size: 14px;
@@ -144,7 +119,7 @@ body, html {
   color: #000;
 }
 
-.checkbox-group input[type="checkbox"] {
+.register-checkbox-group input[type="checkbox"] {
   appearance: none;
   width: 24px;
   height: 24px;
@@ -155,11 +130,11 @@ body, html {
   cursor: pointer;
 }
 
-.checkbox-group input[type="checkbox"]:checked {
+.register-checkbox-group input[type="checkbox"]:checked {
   background-color: black;
 }
 
-.checkbox-group input[type="checkbox"]::after {
+.register-checkbox-group input[type="checkbox"]::after {
   content: "";
   position: absolute;
   width: 6px;
@@ -172,21 +147,21 @@ body, html {
   display: none;
 }
 
-.checkbox-group input[type="checkbox"]:checked::after {
+.register-checkbox-group input[type="checkbox"]:checked::after {
   display: block;
 }
 
-.checkbox-group span {
+.register-checkbox-group span {
   flex: 1;
   display: inline-block;
 }
 
-.checkbox-group a {
+.register-checkbox-group a {
   color: black;
   text-decoration: underline;
 }
 
-#continue {
+#register-btn {
   width: 22%;
   height: 50px;
   background-color: black;
@@ -196,21 +171,21 @@ body, html {
   justify-content: center;
   font-weight: 700;
   position: absolute;
-  top: 650px;
+  top: 700px;
   left: 30px;
   z-index: 1;
   cursor: pointer;
   margin-top: 10px;
 }
 
-#continue > div:nth-child(2) {
+#register-btn > div:nth-child(2) {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 10px;
 }
 
-#continue2 {
+#register2 {
   width: 22%;
   height: 50px;
   border: 1px solid black;
@@ -219,47 +194,7 @@ body, html {
   justify-content: center;
   font-weight: 700;
   position: absolute;
-  top: 654px;
+  top: 704px;
   left: 34px;
   margin-top: 10px;
 }
-
-#signin-btn {
-  width: 22%;
-  height: 50px;
-  background-color: black;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  position: absolute;
-  top: 370px; /* move up compared to #continue */
-  left: 30px;
-  z-index: 1;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-#signin-btn > div:nth-child(2) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10px;
-}
-
-#signin2 {
-  width: 22%;
-  height: 50px;
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  position: absolute;
-  top: 374px; /* match signin-btn's top + margin */
-  left: 34px;
-  margin-top: 10px;
-}
-
-

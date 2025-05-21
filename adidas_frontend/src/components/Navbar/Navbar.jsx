@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
 import { RiUser3Line } from "react-icons/ri";
@@ -8,11 +8,13 @@ import { FaAngleDown } from "react-icons/fa6";
 import { HiArrowLongRight } from "react-icons/hi2";
 import "../Navbar/Navbar.css";
 import LoginPopup from '../LoginPopup';
+import { AuthContext } from '../../context/auth.context'; // Import your auth context
 
 const Navbar = () => {
   const router = useNavigate();
   const location = useLocation();
-  const [showPopup, setShowPopup] = useState(false); // Popup state
+  const { state: authState } = useContext(AuthContext); // Get auth state (assumed)
+  const [showPopup, setShowPopup] = useState(false);
 
   const hideNavbar3Routes = ["/men", "/women", "/kids", "/sign-in","/cart"];
   const hideNavbar3 = hideNavbar3Routes.includes(location.pathname);
@@ -48,7 +50,13 @@ const Navbar = () => {
             <span>help</span>
             <span>orders and returns</span>
             <span>sign up</span>
-            <span onClick={() => router("/sign-in")}>log in</span>
+            {authState?.user ? (
+              <span onClick={() => router("/my-account/profile")}>
+                Welcome, <b>{authState.user.name || authState.user.email.split("@")[0]}</b>
+              </span>
+            ) : (
+              <span onClick={() => router("/sign-in")}>log in</span>
+            )}
           </div>
           <div className="rightNavbar2_2">
             <div className="search">
@@ -80,7 +88,6 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Login Popup */}
       {showPopup && <LoginPopup onClose={() => setShowPopup(false)} />}
     </div>
   );
