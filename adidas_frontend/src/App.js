@@ -16,6 +16,7 @@ import CreateMenProduct from './components/Admin/CreateMenProduct';
 import CreateWomenProduct from './components/Admin/CreateWomenProduct';
 import CreateKidsProduct from './components/Admin/CreateKidsProduct';
 import YourAddedProducts from './components/Admin/YourAddedProducts';
+import SingleProduct from './components/SingleProduct/SingleProduct';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/create-women-product" element={<CreateWomenProduct />} />
         <Route path="/create-kids-product" element={<CreateKidsProduct />} />
         <Route path="/admin-products" element={<YourAddedProducts/>}/>
+        <Route path="/single-product" element={<SingleProduct/>}/>
       </Routes>
     </div>
   );
