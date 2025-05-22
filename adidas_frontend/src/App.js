@@ -38,7 +38,7 @@ function App() {
         <Route path="/create-women-product" element={<CreateWomenProduct />} />
         <Route path="/create-kids-product" element={<CreateKidsProduct />} />
         <Route path="/admin-products" element={<YourAddedProducts/>}/>
-        <Route path="/single-product" element={<SingleProduct/>}/>
+        <Route path="/single-product/:id" element={<SingleProduct/>}/>
       </Routes>
     </div>
   );

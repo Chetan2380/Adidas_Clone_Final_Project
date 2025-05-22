@@ -6,6 +6,7 @@ import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 import { PiHeartStraight } from "react-icons/pi";
 import Footer from '../Footer/Footer';
 import Api from '../../axiosconfig';
+import { useNavigate } from 'react-router-dom';
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330;
@@ -28,6 +29,7 @@ const Mens = () => {
   ]);
 
   const[adimertop,setAdimertop]=useState([])
+    const router=useNavigate();
   
 
   const sliderRef = useRef(null);
@@ -226,7 +228,7 @@ const Mens = () => {
 
                 <div className="clothlist-wrapper">
                     {visibleClothes.map((adimerclothes, index) => (
-                    <div className="differentcloths" key={index}>
+                    <div className="differentcloths" key={index} onClick={()=>router(`/single-prouduct/${adimerclothes._id}`)}>
                         <div className="diffrentshoesimg">
                         <img src={adimerclothes.image} alt={adimerclothes.title} />
                         <div id="heart">

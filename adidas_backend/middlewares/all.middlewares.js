@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import User from "../models/user.model.js";
+import User from "../models/auth.model.js";
 import Admin from "../models/admin.model.js";
 export async function checkIsUserValid(req, res, next) {
   try {

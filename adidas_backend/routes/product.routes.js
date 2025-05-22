@@ -5,6 +5,7 @@ import {
   GetWomenProducts,
   GetKidsProducts,
   GetHomeProducts,
+  GetSingleProducts,
 } from '../controllers/product.controller.js';
 
 const router = express.Router();
@@ -17,5 +18,6 @@ router.get('/men', GetMenProducts);
 router.get('/women', GetWomenProducts);
 router.get('/kids', GetKidsProducts);
 router.get('/home', GetHomeProducts);
+router.post("/get-single-product", GetSingleProducts);
 
 export default router;
