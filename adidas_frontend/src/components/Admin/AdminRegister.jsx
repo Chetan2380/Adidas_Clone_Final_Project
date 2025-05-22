@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Api from '../../axiosconfig';
+import AdminNavbar from './AdminNavbar';
 
 const AdminRegister = () => {
   const router = useNavigate();
@@ -53,6 +54,7 @@ const AdminRegister = () => {
 
   return (
     <div>
+        <AdminNavbar/>
       <form onSubmit={handleSubmit}>
         <h1>Admin Register</h1>
 

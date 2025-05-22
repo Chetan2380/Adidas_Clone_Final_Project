@@ -11,6 +11,11 @@ import Register from './components/Register_Login/Register';
 import Profile from './components/Profile/Profile';
 import AdminRegister from './components/Admin/AdminRegister';
 import AdminLogin from './components/Admin/AdminLogin';
+import CreateCategoryProduct from './components/Admin/CreateCategoryProduct';
+import CreateMenProduct from './components/Admin/CreateMenProduct';
+import CreateWomenProduct from './components/Admin/CreateWomenProduct';
+import CreateKidsProduct from './components/Admin/CreateKidsProduct';
+import YourAddedProducts from './components/Admin/YourAddedProducts';
 
 function App() {
   return (
@@ -27,6 +32,11 @@ function App() {
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/admin-register" element={<AdminRegister/>}/>
         <Route path="/admin-login" element={<AdminLogin/>}/>
+        <Route path="/create-new-product" element={<CreateCategoryProduct/>}/>
+        <Route path="/create-men-product" element={<CreateMenProduct />} />
+        <Route path="/create-women-product" element={<CreateWomenProduct />} />
+        <Route path="/create-kids-product" element={<CreateKidsProduct />} />
+        <Route path="/admin-products" element={<YourAddedProducts/>}/>
       </Routes>
     </div>
   );

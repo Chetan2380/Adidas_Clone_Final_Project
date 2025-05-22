@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
 import Api from '../../axiosconfig';
 import "../Admin/AdminLogin.css"
+import AdminNavbar from './AdminNavbar';
 
 const AdminLogin = () => {
 const {state,dispatch}=useContext(AuthContext);
@@ -29,7 +30,7 @@ const {state,dispatch}=useContext(AuthContext);
                 email: "",
                 password: "",
               });
-              router("/");
+              router("/admin-products");
               toast.success(response.data.message);
             } else {
               toast.error(response?.data?.error)
@@ -44,6 +45,7 @@ const {state,dispatch}=useContext(AuthContext);
       }
   return (
     <div>
+        <AdminNavbar/>
         <form onSubmit={handleSubmit}>
             <h1>Admin Login</h1>
             <label>Email:</label><br/>

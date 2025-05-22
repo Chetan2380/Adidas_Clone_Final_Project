@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import '../Mens/Mens.css';
 import { HiArrowLongRight } from "react-icons/hi2";
 import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 import { PiHeartStraight } from "react-icons/pi";
 import Footer from '../Footer/Footer';
+import Api from '../../axiosconfig';
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330;
@@ -26,18 +27,7 @@ const Mens = () => {
     { itemimg: "https://brand.assets.adidas.com/video/upload/f_auto:video,q_auto/if_w_gt_800,w_800/originals_ss25_the_original_hp_glp_w_firebird_tc_d_091dd9e7cd.mp4", title: "Firebird", desc: "A celebration of sports heritage", category: "Shop now" }
   ]);
 
-  const[adimertop,setAdimertop]=useState([{itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/f811b2df598e4254b4794f61e6ebb6f9_9366/Mercedes_-_AMG_Petronas_Formula_One_Team_Summer_Chino_Pant_Beige_JW3472_000_plp_model.jpg",price:"7 999.00",title:"Mercedes - AMG Petronas Formula One Team Summer Chino Pant",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/283c4b2348ce44aa9e7b3b4b0d221c02_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DRIVER_JERSEY_Black_JW5361_HM1.jpg",price:"5 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DRIVER JERSEY",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/f35256c62f8d4e068033705a0a1d226e_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DRIVER_JERSEY_White_JX5798_HM1.jpg",price:"5 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DRIVER JERSEY",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/b690857c2c164f1898795c7f542ae106_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DNA_PANT_Black_JV5379_000_plp_model.jpg",price:"5 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DNA PANT",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/d12492ac218942438f3b7f6969a19c96_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_POLO_Black_JW5391_000_plp_model.jpg",price:"6 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM POLO",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/3f064e5faf164bf38f3ba9191fb451fd_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DRIVER_JERSEY_AUTHENTIC_Black_JY2607_HM1.jpg",price:"8 599.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DRIVER JERSEY AUTHENTIC",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/7dfe622380bd4cfc94c32e20ce283fba_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_MECHANICS_JERSEY_Black_JX8245_HM1.jpg",price:"5 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM MECHANICS JERSEY",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/8a2b989a596b4eb0a9219c409154d232_9366/Mercedes_-_AMG_Petronas_Formula_One_Team_DNA_Track_Top_Black_JV5355_000_plp_model.jpg",price:"5 999.00",title:"Mercedes - AMG Petronas Formula One Team DNA Track Top",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/e1714ed565ea49749501ec69d7d037f5_9366/Mercedes_-_AMG_Petronas_Formula_One_Team_DNA_Tee_White_JV5457_000_plp_model.jpg",price:"2 499.00",title:"Mercedes - AMG Petronas Formula One Team DNA Tee",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/c6685c449da440858d8070f09517bce2_9366/ADIDAS_FEROZA_BASE_MERCEDES_AMG_PETRONAS_F1_TEAM_SHOES_Black_JQ3273_00_plp_standard.jpg",price:"8 999.00",title:"ADIDAS FEROZA BASE MERCEDES AMG PETRONAS F1 TEAM SHOES",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/e77e4d26bc88465eb01f278c7595716e_9366/Mercedes_-_AMG_Petronas_Formula_One_Team_DNA_Tee_Black_JV5425_000_plp_model.jpg",price:"2 499.00",title:"Mercedes - AMG Petronas Formula One Team DNA Tee",category:"Performance"},
-  {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/af88fb35e5bd4836b9d46ae77c7c285e_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_POLO_White_JW0586_000_plp_model.jpg",price:"6 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM POLO",category:"Performance"}])
+  const[adimertop,setAdimertop]=useState([])
   
 
   const sliderRef = useRef(null);
@@ -70,6 +60,32 @@ const Mens = () => {
 
     setShowLeftArrow(container.scrollLeft + scrollAmount > 0);
   };
+
+  async function fetchMensProducts(){
+        try{
+            const response = await Api.get("/product/men")
+            if(response.data.success){
+                setAdimertop(response.data.products);
+            } 
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+  useEffect(() => {
+  // const fetchMensProducts = async () => {
+  //   try {
+  //     const response = await Api.fetch('/product/men');
+  //     const data = await response.json();
+  //     setAdimertop(data);
+  //   } catch (error) {
+  //     console.error("Error fetching men's products:", error);
+  //   }
+  // };
+
+  fetchMensProducts();
+}, []);
 
   return (
     <div>
@@ -212,14 +228,14 @@ const Mens = () => {
                     {visibleClothes.map((adimerclothes, index) => (
                     <div className="differentcloths" key={index}>
                         <div className="diffrentshoesimg">
-                        <img src={adimerclothes.itemimg} alt={adimerclothes.title} />
+                        <img src={adimerclothes.image} alt={adimerclothes.title} />
                         <div id="heart">
                             <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
                         </div>
                         </div>
                         <div className="differentshoesprice">₹{adimerclothes.price}</div>
                         <div className="differentshoestitle">{adimerclothes.title}</div>
-                        <div className="differentshoescategory">{adimerclothes.category}</div>
+                        <div className="differentshoescategory">{adimerclothes.category2}</div>
                     </div>
                     ))}
                 </div>

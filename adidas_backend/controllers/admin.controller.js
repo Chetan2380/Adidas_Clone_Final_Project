@@ -100,3 +100,19 @@ export const LogoutAdmin = async (req, res) => {
     return res.status(500).json({ success: false, error: "Server error." });
   }
 };
+
+export const YourAddedProducts = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    if (!userId) {
+      return res.json({ success: false, error: "User ID is required." });
+    }
+
+    const products = await Product.find({ creatorId: userId });
+
+    return res.json({ success: true, products });
+  } catch (error) {
+    console.log(error, "error");
+    return res.json({ error, success: false });
+  }
+};
