@@ -9,6 +9,8 @@ import Login from './components/Register_Login/Login';
 import Cart from './components/Cart/Cart';
 import Register from './components/Register_Login/Register';
 import Profile from './components/Profile/Profile';
+import AdminRegister from './components/Admin/AdminRegister';
+import AdminLogin from './components/Admin/AdminLogin';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/sign-up" element={<Register/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/admin-register" element={<AdminRegister/>}/>
+        <Route path="/admin-login" element={<AdminLogin/>}/>
       </Routes>
     </div>
   );
