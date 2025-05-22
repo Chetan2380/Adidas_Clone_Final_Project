@@ -228,7 +228,7 @@ const Mens = () => {
 
                 <div className="clothlist-wrapper">
                     {visibleClothes.map((adimerclothes, index) => (
-                    <div className="differentcloths" key={index} onClick={()=>router(`/single-prouduct/${adimerclothes._id}`)}>
+                    <div className="differentcloths" key={index} onClick={()=>router(`/single-product/${adimerclothes._id}`)}>
                         <div className="diffrentshoesimg">
                         <img src={adimerclothes.image} alt={adimerclothes.title} />
                         <div id="heart">

@@ -114,6 +114,7 @@
   .rightNavbar2_1 > span{
     font-size: 12px;
     font-weight: 100px;
+    cursor: pointer;
   }
 
   .rightNavbar2_2{

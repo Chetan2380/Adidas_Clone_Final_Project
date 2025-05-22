@@ -14,8 +14,9 @@ import { AuthContext } from '../../context/auth.context';
 const SingleProduct = () => {
   const { id } = useParams();
   const { state } = useContext(AuthContext);
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState([]);
   const [transformOrigin, setTransformOrigin] = useState('center');
+  const [error, setError] = useState(null);
 
   const handleMouseMove = (e) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -27,15 +28,18 @@ const SingleProduct = () => {
   const handleMouseLeave = () => setTransformOrigin('center');
 
   const getProduct = async () => {
-    try {
-      const res = await Api.post('/product/get-single-product', { productId: id });
-      if (res.data.success) {
-        setProduct(res.data.product);
-      }
-    } catch (error) {
-      console.error(error);
+  try {
+    const res = await Api.post(`/product/get-single-product/${id}`);
+    if (res.data.success) {
+      setProduct(res.data.product);
+    } else {
+      setError(res.data.error || "Failed to fetch product");
     }
-  };
+  } catch (error) {
+    setError("Something went wrong");
+    console.error(error);
+  }
+};
 
   const AddToCart = async () => {
     try {
@@ -83,7 +87,7 @@ const SingleProduct = () => {
               >
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={product.title}
                   style={{ transformOrigin }}
                 />
               </div>
@@ -95,7 +99,7 @@ const SingleProduct = () => {
         <div className="product-right">
           <div className="product-summary">
             <p className="category">{product.category || "Lifestyle"}</p>
-            <h2 className="title">{product.name}</h2>
+            <h2 className="title">{product.title}</h2>
             <h3 className="price">₹{product.price}</h3>
             <p className="tax-info">MRP in Indian currency per pair<br />Inclusive of all taxes</p>
             <p className="offer">

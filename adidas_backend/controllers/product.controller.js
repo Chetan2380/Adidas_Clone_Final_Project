@@ -109,13 +109,12 @@ export const GetHomeProducts = async (req, res) => {
 
 export const GetSingleProducts = async (req, res) => {
   try {
-    const { productId } = req.body;
-    if (!productId) {
-      return res.json({ success: false, error: "Product ID is required." });
-    }
-    const product = await Product.findById(productId);
+    const { id } = req.params;
+    if (!id) return res.status(400).json({ success: false, error: "Product ID is required." });
+    const product = await Product.findById(id);
+    if (!product) return res.status(404).json({ success: false, error: "Product not found." });
     res.json({ success: true, product });
   } catch (error) {
-    return res.json({ error, success: false });
+    res.status(500).json({ success: false, error: error.message });
   }
 };

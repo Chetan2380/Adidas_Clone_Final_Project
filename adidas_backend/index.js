@@ -24,7 +24,10 @@ app.use(session({
   secret: 'MYSECRETKEY',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: true, sameSite: 'None' }
+  cookie: {
+  secure: false, // 🔧 Use false for local development
+  sameSite: 'Lax' // Or 'None' with secure: true in production
+}
 }));
 
 app.use(passport.initialize());
