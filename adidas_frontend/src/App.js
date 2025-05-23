@@ -17,6 +17,7 @@ import CreateWomenProduct from './components/Admin/CreateWomenProduct';
 import CreateKidsProduct from './components/Admin/CreateKidsProduct';
 import YourAddedProducts from './components/Admin/YourAddedProducts';
 import SingleProduct from './components/SingleProduct/SingleProduct';
+import OrderDetails from './components/OrderDetails/OrderDetails ';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/create-kids-product" element={<CreateKidsProduct />} />
         <Route path="/admin-products" element={<YourAddedProducts/>}/>
         <Route path="/single-product/:id" element={<SingleProduct/>}/>
+        <Route path="/order-details" element={<OrderDetails/>}/>
       </Routes>
     </div>
   );

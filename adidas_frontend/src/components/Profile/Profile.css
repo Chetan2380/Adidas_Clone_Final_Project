@@ -42,3 +42,21 @@
   border-radius: 4px;
   background-color: #f9f9f9;
 }
+
+.logout-button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #222; /* Dark button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.logout-button:hover {
+  background-color: #555;
+}

@@ -1,12 +1,16 @@
-import React, { useContext } from 'react';
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
-import { AuthContext } from '../../context/auth.context';
-import './Profile.css';
+import React, { useContext } from "react";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import { AuthContext } from "../../context/auth.context";
+import { useNavigate } from "react-router-dom";
+import "./Profile.css";
+import toast from "react-hot-toast";
+import Api from "../../axiosconfig";
 
 const Profile = () => {
-  const { state: authState } = useContext(AuthContext);
+  const { state: authState, dispatch } = useContext(AuthContext);
   const user = authState?.user;
+  const navigate = useNavigate();
 
   if (!user) {
     return (
@@ -18,6 +22,21 @@ const Profile = () => {
         <Footer />
       </>
     );
+  }
+
+  async function handleLogout() {
+    try {
+      const response = await Api.post("/auth/logout"); // Adjust the route if needed
+      if (response.data.success) {
+        dispatch({ type: "LOGOUT" });
+        navigate("/sign-in"); // Redirect to login page
+        toast.success(response.data.message || "Logged out successfully");
+      } else {
+        toast.error(response.data.message || "Logout failed.");
+      }
+    } catch (error) {
+      toast.error("Failed to logout.");
+    }
   }
 
   return (
@@ -38,8 +57,12 @@ const Profile = () => {
             <label>Phone Number</label>
             <p>{user.phone || "-"}</p>
           </div>
-          {/* Add more profile fields as needed */}
         </div>
+
+        {/* Logout Button */}
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
       <Footer />
     </>

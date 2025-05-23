@@ -24,7 +24,7 @@ const Cart = () => {
   async function getAllCartProducts() {
     setLoading(true);
     try {
-      const res = await Api.get("/cart-wishlist/get-all-cart-product");
+      const res = await Api.get("/cart-wishlist/get-all-cart-products");
       if (res.data.success) {
         setProducts(res.data.cartProducts);
         setTotalPrice(res.data.totalPrice);
@@ -37,24 +37,28 @@ const Cart = () => {
   }
 
   const handleDelete = async (productId) => {
-    try {
-      const res = await Api.post("/user/delete-cart-product", {
-        data: { productId },
-      });
-      if (res.data.success) {
-        toast.success("Deleted product");
-        getAllCartProducts();
-      } else {
-        toast.error("Failed to delete");
-      }
-    } catch (error) {
-      toast.error("Error deleting");
+  // Optimistically update the UI
+  setProducts((prev) => prev.filter((p) => p._id !== productId));
+
+  try {
+    const res = await Api.post("/cart-wishlist/delete-cart-product", { productId });
+    if (!res.data.success) {
+      toast.error("Failed to delete");
+      // Re-fetch in case something went wrong
+      getAllCartProducts();
+    } else {
+      toast.success("Deleted product");
     }
-  };
+  } catch (error) {
+    toast.error("Error deleting");
+    getAllCartProducts(); // restore correct state on error
+  }
+};
+
 
   const BuyProducts = async () => {
     try {
-      const res = await Api.post("/user/buy-products");
+      const res = await Api.post("/cart-wishlist/buy-products");
       if (res.data.success) {
         toast.success("Order placed successfully!");
         router("/order-details");
@@ -63,6 +67,10 @@ const Cart = () => {
       toast.error("Order failed");
     }
   };
+
+  useEffect(() => {
+    getAllCartProducts();
+  }, []);
 
   return (
     <div>
@@ -106,7 +114,7 @@ const Cart = () => {
                 <div className="title-price-row">
                   <div className="product-title">
                     <p>{product.name}</p>
-                    <div className="product-color">Category: {product.category}</div>
+                    <div className="product-color">{product.title}</div>
                     <div className="product-size">Quantity: {product.quantity}</div>
                   </div>
                   <div className="price-cross-heart">

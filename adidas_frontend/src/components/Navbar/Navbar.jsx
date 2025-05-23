@@ -51,7 +51,7 @@ const Navbar = () => {
             <span>orders and returns</span>
             <span>sign up</span>
             {authState?.user ? (
-              <span onClick={() => router("/my-account/profile")}>
+              <span onClick={() => router("/profile")}>
                 Welcome, <b>{authState.user.name || authState.user.email.split("@")[0]}</b>
               </span>
             ) : (

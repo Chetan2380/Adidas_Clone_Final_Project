@@ -6,7 +6,7 @@ import {
   DeleteCartProduct,
   GetAllCartProducts,
   GetAllWishlistProducts,
-  getOrderDetails,
+  getOrderDetails
 } from "../controllers/cartwishlist.controller.js";
 import { checkIsUserValid } from "../middlewares/all.middlewares.js";
 
@@ -17,6 +17,8 @@ router.get("/get-all-cart-products", checkIsUserValid, GetAllCartProducts);
 router.post("/add-to-cart", checkIsUserValid, AddToCart);
 router.post("/delete-cart-product", checkIsUserValid, DeleteCartProduct);
 router.post("/buy-products", checkIsUserValid, buyProducts);
+// router.post("/update-cart-quantity", checkIsUserValid, UpdateCartQuantity);
+
 
 // 📦 Orders
 router.get("/get-order-details", checkIsUserValid, getOrderDetails);
