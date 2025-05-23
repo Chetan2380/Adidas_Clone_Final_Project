@@ -4,7 +4,7 @@ const productSchema = new Schema({
   title: String,
   price: Number,
   category: String,
-  category2: String, // ✅ NEW FIELD
+  category2: String, 
   productcategory: String,
   quantity: Number,
   event: String,

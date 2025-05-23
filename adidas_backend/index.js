@@ -25,7 +25,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-  secure: false, // 🔧 Use false for local development
+  secure: false, //Use false for local development
   sameSite: 'Lax' // Or 'None' with secure: true in production
 }
 }));

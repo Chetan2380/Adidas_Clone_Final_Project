@@ -18,6 +18,7 @@ import CreateKidsProduct from './components/Admin/CreateKidsProduct';
 import YourAddedProducts from './components/Admin/YourAddedProducts';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import OrderDetails from './components/OrderDetails/OrderDetails ';
+import Wishlist from './components/Wishlist/Wishlist';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/admin-products" element={<YourAddedProducts/>}/>
         <Route path="/single-product/:id" element={<SingleProduct/>}/>
         <Route path="/order-details" element={<OrderDetails/>}/>
+        <Route path="/wishlist" element={<Wishlist/>}/>
       </Routes>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import "../Home/Home.css"
 import { HiArrowLongRight } from "react-icons/hi2";
@@ -7,13 +7,17 @@ import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 import { FaInstagram } from "react-icons/fa";
 import Footer from '../Footer/Footer';
 import Api from '../../axiosconfig';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AuthContext } from '../../context/auth.context';
+import toast from 'react-hot-toast';
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330; // width of one card
 const scrollStep = cardWidth * 4;
 const Home = () => {
   const router = useNavigate();
+    const { state } = useContext(AuthContext);
+    const {id}=useParams();
   const[buyshoes,setBuyshoes]=useState([])
 
 const[whathotitem,setWhathotitem]=useState([{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/tc_ZNE_37ef896079.jpg",title:" Z.N.E. TANK SIGNED BY DECLAN RICE",desc:"Win a women's tee or tank from the new ADIDAS Z.N.E. range signed by Declan Rice.",category:"SIGN UP NOW"},
@@ -95,6 +99,21 @@ const fetchHomeProducts = async () => {
     }
   };
 
+  async function AddToWishlist(productId) {
+  try {
+    const response = await Api.post("/cart-wishlist/add-to-wishlist", {
+      userId: state?.user?.userId,
+      productId: productId,
+    });
+    if (response.data.success) {
+      toast.success(response.data.message);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
   useEffect(() => {
     fetchHomeProducts();
   }, []);
@@ -157,7 +176,9 @@ const fetchHomeProducts = async () => {
                 <div className="differentshoes" key={index} onClick={() => router(`/single-product/${buymoreshoes._id}`)}>
                   <div className="diffrentshoesimg">
                     <img src={buymoreshoes.image} alt={buymoreshoes.title} />
-                    <div id="heart">
+                    <div id="heart" onClick={(e) => {
+  e.stopPropagation();
+  AddToWishlist(buymoreshoes._id);}}>
                       <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
                     </div>
                   </div>

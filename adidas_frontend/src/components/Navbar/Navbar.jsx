@@ -88,7 +88,7 @@ useEffect(() => {
                   />
                 </h3>
               </div>
-              <div><PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500px" }} /></div>
+              <div onClick={() => router("/wishlist")}><PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500px" }} /></div>
               <div onClick={() => router("/cart")}><MdOutlineShoppingBag style={{ color: "black", fontSize: "22px", fontWeight: "500px" }} /></div>
             </div>
           </div>
