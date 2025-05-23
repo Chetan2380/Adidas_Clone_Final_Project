@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/auth.context';
 import Api from '../../axiosconfig';
 import AdminNavbar from './AdminNavbar';
 
-const CreateCategoryProduct = ({ categoryLabel }) => {
+const CreateCategoryProduct = ({ categoryLabel="Home" }) => {
   const { state } = useContext(AuthContext);
   const router = useNavigate();
 
