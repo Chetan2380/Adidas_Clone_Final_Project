@@ -12,7 +12,7 @@ root.render(
     <MyContextProvider>
     <BrowserRouter>
     <Toaster
-            position="top-center"
+            position="top-right"
             reverseOrder={false}
             gutter={8}
             containerClassName=""

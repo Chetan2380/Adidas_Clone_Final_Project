@@ -60,7 +60,20 @@
   display: flex;
   gap: 12px;
   margin-bottom: 16px;
+  margin-top: 10px;
 }
+
+.popup-login-create-link {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.popup-login-create-link span {
+  color: rgb(0, 162, 255);
+  text-decoration: underline;
+  font-weight: 700;
+}
+
 
 .popup-social-icons button {
   width: 40px;
