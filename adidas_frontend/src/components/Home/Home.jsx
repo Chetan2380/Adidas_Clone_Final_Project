@@ -37,6 +37,11 @@ const[selectsportitem,setSelectsportitem]=useState([{itemimg:"https://brand.asse
 const sliderRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+  const sliderRef2 = useRef(null);
+  const [showLeftArrow2, setShowLeftArrow2] = useState(false);
+  const [isHovered2, setIsHovered2] = useState(false);
+
 const [currentPage, setCurrentPage] = useState(0);
   const totalPages = Math.ceil(buyshoes.length / ITEMS_PER_PAGE);
   const startIndex = currentPage * ITEMS_PER_PAGE;
@@ -63,6 +68,20 @@ const [currentPage, setCurrentPage] = useState(0);
   });
 
   setShowLeftArrow(container.scrollLeft + scrollAmount > 0);
+};
+
+const handleScroll2 = (direction) => {
+  if (!sliderRef2.current) return;
+  const container = sliderRef2.current;
+
+  const scrollAmount2 = direction === "right" ? scrollStep : -scrollStep;
+
+  container.scrollBy({
+    left: scrollAmount2,
+    behavior: "smooth",
+  });
+
+  setShowLeftArrow2(container.scrollLeft + scrollAmount2 > 0);
 };
 
 const fetchHomeProducts = async () => {
@@ -186,22 +205,22 @@ const fetchHomeProducts = async () => {
 
           <div
             className="whatshot-slider-wrapper"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseEnter={() => setIsHovered2(true)}
+            onMouseLeave={() => setIsHovered2(false)}
           >
-            {showLeftArrow && isHovered && (
-              <button className="slider-arrow2 left" onClick={() => handleScroll("left")}>
+            {showLeftArrow2 && isHovered2 && (
+              <button className="slider-arrow2 left" onClick={() => handleScroll2("left")}>
                 <PiCaretLeftBold />
               </button>
             )}
 
-            {isHovered && (
-              <button className="slider-arrow2 right" onClick={() => handleScroll("right")}>
+            {isHovered2 && (
+              <button className="slider-arrow2 right" onClick={() => handleScroll2("right")}>
                 <PiCaretRightBold />
               </button>
             )}
 
-            <div className="whatshot-slider-container" ref={sliderRef}>
+            <div className="whatshot-slider-container" ref={sliderRef2}>
               {whathotitem.map((item, index) => {
                 const isVideo = item.itemimg.endsWith(".mp4");
                 return (
