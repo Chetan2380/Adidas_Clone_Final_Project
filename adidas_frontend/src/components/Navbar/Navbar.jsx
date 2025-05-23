@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
 import { RiUser3Line } from "react-icons/ri";
@@ -19,11 +19,27 @@ const Navbar = () => {
   const hideNavbar3Routes = ["/men", "/women", "/kids", "/sign-in","/cart"];
   const hideNavbar3 = hideNavbar3Routes.includes(location.pathname);
 
+  const messages = [
+  "FREE DELIVERY, RETURN & EXCHANGE",
+  "EXTRA 5% OFF ON PREPAID ORDERS",
+  "SIGN-UP & GET 10% OFF"
+];
+  const [index, setIndex] = useState(0);
+
+useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex(prev => (prev + 1) % messages.length);
+    }, 5000); // change every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div>
       <div className="Navbar">
         <div className="Navbar1">
-          FREE DELIVERY, RETURN & EXCHANGE<span><FaAngleDown /></span>
+          <div key={index} className="fade-message">
+            {messages[index]} <FaAngleDown />
+          </div>
         </div>
       </div>
 

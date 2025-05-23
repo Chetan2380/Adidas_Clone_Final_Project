@@ -29,13 +29,23 @@
     color: white;
     background-color: black;
     letter-spacing: 2px;
+  overflow: hidden;
   }
 
-  .Navbar1 > span{
-    margin-left: 16px;
-    font-size: 15px;
-    margin-top: 10px;
-  }
+.fade-message {
+  opacity: 0;
+  animation: fadeInOut 5s ease-in-out forwards;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
 
   .Navbar2{
     height: 80px;
