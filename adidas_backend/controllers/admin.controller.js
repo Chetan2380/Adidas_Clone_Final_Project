@@ -1,4 +1,5 @@
 import Admin from "../models/admin.model.js";
+import Product from "../models/product.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 

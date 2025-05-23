@@ -1,15 +1,18 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import "../Kids/Kids.css"
 import { HiArrowLongRight } from "react-icons/hi2";
 import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 import { PiHeartStraight } from "react-icons/pi";
+import Api from '../../axiosconfig';
+import { useNavigate } from 'react-router-dom';
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330;
 const scrollStep = cardWidth * 4;
 const Kids = () => {
+  const router = useNavigate();
     const [whathotitem1, setWhathotitem1] = useState([
           { itemimg: "https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/global_zne_sportswear_ss25_launch_kglp_navigation_card_teaser_1_d_c07c100d10.jpg", title: "ADIDAS Z.N.E.", desc: "The lines that connect us.", category: "Shop now" },
           { itemimg: "https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/global_franchise_toolkit_samba_q1_originals_ss25_launch_navigation_card_teaser_kids_glp_d_626a27dbc1.jpg", title: "Samba", desc: "Iconic style in every step.", category: "SHOP NOW" },
@@ -18,18 +21,7 @@ const Kids = () => {
           { itemimg: "https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/Horizontal_FW_24_disney_lionking_global_launch_HP_and_kids_LP_carousel_mini_lookbook1_d_e12b29aa80.jpg", title: "adidas | Disney: The Lion King", desc: "For every brave adventure.", category: "SHOP NOW" }
     ]);
 
-    const[adimertop3,setAdimertop3]=useState([{itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/859b09573b61415ea595df3c35ac74e6_9366/Mercedes_-_AMG_Petronas_Formula_One_Team_Driver_Jersey_Replica_Summer_Pack_Kids_Burgundy_JZ6209_01_laydown.jpg",price:"3 599.00",title:"Mercedes - AMG Petronas Formula One Team Driver Jersey Replica Summer Pack Kids",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/efbfed3fc7db4272a42b8c85f814f5c7_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DRIVER_JERSEY_Black_JW5363_01_laydown.jpg",price:"3 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DRIVER JERSEY",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/a5b337da1bc34adaba4094d42f2a619d_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DNA_TEE_Black_JV5423_01_laydown.jpg",price:"1 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DNA TEE",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/bf68de38045948e2b97301346c71171d_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DNA_BABY_JOGGER_SHORT_SLEEVE_Black_JV5438_00_plp_laydown.jpg",price:"3 999.00",title:"MERCEDES - MERCEDES - AMG PETRONAS FORMULA ONE TEAM DNA BABY JOGGER SHORT SLEEVE",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/ce017fe3f6a34ff6b4727d4f876d34e7_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DNA_BABY_JOGGER_LONG_SLEEVE_Black_JV5439_00_plp_laydown.jpg",price:"4 599.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DNA BABY JOGGER LONG SLEEVE",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/aa7f38c86cb84f6aad047a454cafca08_9366/Mercedes_-_AMG_Petronas_Formula_One_Team_Acesmash_Mid_Shoes_Black_JS4078_00_plp_standard.jpg",price:"3 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DNA BABY JOGGER SHORT SLEEVE",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/14e514f99bb34bfc835281c32e49e312_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DNA_PANT_Black_JV5431_01_laydown.jpg",price:"4 599.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DNA PANT",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/4a19e2d38b21427fbebc7c04628b5f0e_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DNA_BABY_JOGGER_LONG_SLEEVE_White_JV5445_00_plp_laydown.jpg",price:"4 599.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DNA BABY JOGGER LONG SLEEVE",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/52fcc597520244659fe766e718d4fede_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_ULTIMASHOW_2.0_SHOES_JUNIOR_Black_JQ3522_00_plp_standard.jpg",price:"5 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM ULTIMASHOW 2.0 SHOES JUNIOR",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/897dc65fd9e94bb58eb14062f48dad01_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_ULTIMASHOW_2.0_SHOES_JUNIOR_White_JR1086_00_plp_standard.jpg",price:"5 999.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM ULTIMASHOW 2.0 SHOES JUNIOR",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/7f6c7d221e144990a7110035081f0216_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DNA_GRAPHIC_TEE_Black_JZ0901_01_laydown.jpg",price:"1 799.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DNA GRAPHIC TEE",category:"Performance"},
-        {itemimg:"https://assets.adidas.com/images/w_600,f_auto,q_auto/c2c4019096b940baaf9abae393b92f74_9366/MERCEDES_-_AMG_PETRONAS_FORMULA_ONE_TEAM_DNA_GRAPHIC_TEE_White_JZ0900_01_laydown.jpg",price:"1 799.00",title:"MERCEDES - AMG PETRONAS FORMULA ONE TEAM DNA GRAPHIC TEE",category:"Performance"}])
+    const[adimertop3,setAdimertop3]=useState([])
     
     
     const sliderRef = useRef(null);
@@ -62,6 +54,22 @@ const Kids = () => {
       
           setShowLeftArrow(container.scrollLeft + scrollAmount > 0);
         };
+
+  const fetchKidsProducts = async () => {
+    try {
+      const response = await Api.get("/product/kids");
+      if (response.data.success) {
+        setAdimertop3(response.data.products);
+      }
+    } catch (error) {
+      console.error("Failed to fetch kids products:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchKidsProducts();
+  }, []);
+
   return (
     <div>
         <Navbar/>
@@ -139,19 +147,19 @@ const Kids = () => {
             </button>
 
             <div className="kids-carousel-list">
-                {visibleClothes.map((item, index) => (
-                <div className="kids-carousel-card" key={index}>
-                    <div className="kids-card-image">
-                    <img src={item.itemimg} alt={item.title} />
+              {visibleClothes.map((item, index) => (
+                <div className="kids-carousel-card" key={index} onClick={() => router(`/single-product/${item._id}`)}>
+                  <div className="kids-card-image">
+                    <img src={item.image} alt={item.title} />
                     <div className="kids-wishlist-icon">
-                        <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                      <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
                     </div>
-                    </div>
-                    <div className="kids-card-price">₹{item.price}</div>
-                    <div className="kids-card-title">{item.title}</div>
-                    <div className="kids-card-category">{item.category}</div>
+                  </div>
+                  <div className="kids-card-price">₹{item.price}</div>
+                  <div className="kids-card-title">{item.title}</div>
+                  <div className="kids-card-category">{item.category2}</div>
                 </div>
-                ))}
+              ))}
             </div>
 
             <button onClick={nextPage} disabled={currentPage === totalPages - 1} className='kids-carousel-arrow right'>
