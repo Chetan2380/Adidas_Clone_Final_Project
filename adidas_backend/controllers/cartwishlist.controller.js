@@ -109,6 +109,28 @@ export const GetAllWishlistProducts = async (req, res) => {
   }
 };
 
+export const DeleteWishlistProduct = async (req, res) => {
+  try {
+    const { productId } = req.body;
+    const userId = req.userId;
+
+    const wishlist = await Cart.findOneAndUpdate(
+      { user: userId },
+      { $pull: { wishlistProducts: productId } },
+      { new: true }
+    );
+
+    if (!wishlist) {
+      return res.json({ success: false, message: "Wishlist not found" });
+    }
+
+    res.json({ success: true, message: "Product removed from wishlist" });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+
 export const buyProducts = async (req, res) => {
   try {
     const userId = req.userId;

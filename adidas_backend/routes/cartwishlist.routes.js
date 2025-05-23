@@ -4,6 +4,7 @@ import {
   AddToWishlist,
   buyProducts,
   DeleteCartProduct,
+  DeleteWishlistProduct,
   GetAllCartProducts,
   GetAllWishlistProducts,
   getOrderDetails
@@ -26,5 +27,6 @@ router.get("/get-order-details", checkIsUserValid, getOrderDetails);
 // Wishlist Routes
 router.get("/get-all-wishlist-products", checkIsUserValid, GetAllWishlistProducts);
 router.post("/add-to-wishlist", checkIsUserValid, AddToWishlist);
+router.post("/delete-wishlist-product", checkIsUserValid, DeleteWishlistProduct);
 
 export default router;
