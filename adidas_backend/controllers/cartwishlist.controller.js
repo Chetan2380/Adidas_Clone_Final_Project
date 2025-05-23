@@ -52,20 +52,15 @@ export const GetAllCartProducts = async (req, res) => {
 // Delete Product from Cart
 export const DeleteCartProduct = async (req, res) => {
   try {
-    const { productId } = req.body;
-    const userId = req.userId;
-
-    const cart = await Cart.findOneAndUpdate(
-      { user: userId },
-      { $pull: { cartProducts: productId } },
-      { new: true }
-    );
-
-    if (!cart) return res.json({ success: false, message: "Cart not found" });
-
-    res.json({ success: true, message: "Product removed from cart" });
+      const { productId } = req.body;
+      console.log(productId)
+      const deletedCartProduct = await Product.findByIdAndDelete(productId);
+      if (!deletedCartProduct) {
+          return res.json({ success: false, error: "Product not found." });
+      }
+      res.json({ success: true, message: "Product deleted successfully." });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+      return res.json({ error, success: false });
   }
 };
 
@@ -90,6 +85,40 @@ export const AddToWishlist = async (req, res) => {
     res.json({ success: true, message: "Product added to wishlist" });
 
   } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+// Update Cart Quantity
+export const UpdateCartQuantity = async (req, res) => {
+  try {
+    const { productId, quantity } = req.body;
+    const userId = req.userId;
+
+    if (!productId || !quantity || quantity <= 0) {
+      return res.status(400).json({ success: false, error: "Invalid product ID or quantity" });
+    }
+
+    // Check if the product exists in the cart
+    const cart = await Cart.findOne({ user: userId });
+
+    if (!cart || !cart.cartProducts.includes(productId)) {
+      return res.status(404).json({ success: false, error: "Product not found in cart" });
+    }
+
+    // Update quantity in the Product collection
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ success: false, error: "Product not found" });
+    }
+
+    product.quantity = quantity;
+    await product.save();
+
+    res.json({ success: true, message: "Product quantity updated successfully" });
+
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ success: false, error: error.message });
   }
 };

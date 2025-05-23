@@ -55,6 +55,28 @@ const Cart = () => {
   }
 };
 
+const handleQuantityChange = async (productId, newQuantity) => {
+  // Optimistically update the UI
+  setProducts(prevProducts =>
+    prevProducts.map(product =>
+      product._id === productId ? { ...product, quantity: newQuantity } : product
+    )
+  );
+
+  try {
+    const res = await Api.post("/cart-wishlist/update-cart-quantity", { productId, quantity: newQuantity });
+    if (res.data.success) {
+      toast.success("Cart updated successfully");
+      getAllCartProducts(); // Re-fetch cart products to reflect the changes
+    } else {
+      toast.error(res.data.error);
+    }
+  } catch (err) {
+    toast.error("Failed to update cart");
+    getAllCartProducts(); // Restore correct state on error
+  }
+};
+
 
   const BuyProducts = async () => {
     try {
@@ -67,6 +89,7 @@ const Cart = () => {
       toast.error("Order failed");
     }
   };
+
 
   useEffect(() => {
     getAllCartProducts();
@@ -106,8 +129,8 @@ const Cart = () => {
 
           {/* Cart Products */}
           {products.map((product) => (
-            <div className="product-card" key={product._id} onClick={() => router(`/single-product/${product._id}`)}>
-              <div className="product-card-left">
+            <div className="product-card" key={product._id}>
+              <div className="product-card-left" onClick={() => router(`/single-product/${product._id}`)}>
                 <img src={product.image} alt="product" />
               </div>
               <div className="product-card-right">
@@ -136,11 +159,10 @@ const Cart = () => {
                 </div>
                 <div className="product-info">
                   <div className="quantity">
-                    <span>{product.quantity}</span>
-                    <span>
-                      <FaAngleDown />
-                    </span>
-                  </div>
+  <button onClick={() => handleQuantityChange(product._id, product.quantity - 1)}>-</button>
+  <span>{product.quantity}</span>
+  <button onClick={() => handleQuantityChange(product._id, product.quantity + 1)}>+</button>
+</div>
                 </div>
               </div>
             </div>
