@@ -5,9 +5,11 @@ import toast from "react-hot-toast";
 import { PiHeartStraightFill } from "react-icons/pi";
 import "./Wishlist.css"; // NEW CSS
 import Api from "../../axiosconfig";
+import { useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
+  const router = useNavigate();
 
   useEffect(() => {
     fetchWishlist();
@@ -55,7 +57,7 @@ const Wishlist = () => {
             <>
               <div className="wishlist-left single">
                 {wishlistItems.map((product) => (
-                  <div className="wishlist-item" key={product._id}>
+                  <div className="wishlist-item" key={product._id} onClick={() => router(`/single-product/${product._id}`)}>
                     <div className="wishlist-item-img">
                       <img src={product.image} alt="wishlist product" />
                       <button className="wishlist-remove-btn" onClick={() => removeFromWishlist(product._id)}>
@@ -89,7 +91,7 @@ const Wishlist = () => {
             <div className="wishlist-stack-layout">
               <div className="wishlist-grid">
                 {wishlistItems.map((product) => (
-                  <div className="wishlist-item" key={product._id}>
+                  <div className="wishlist-item" key={product._id} onClick={() => router(`/single-product/${product._id}`)}>
                     <div className="wishlist-item-img">
                       <img src={product.image} alt="wishlist product" />
                       <button className="wishlist-remove-btn" onClick={() => removeFromWishlist(product._id)}>

@@ -106,7 +106,7 @@ const Cart = () => {
 
           {/* Cart Products */}
           {products.map((product) => (
-            <div className="product-card" key={product._id}>
+            <div className="product-card" key={product._id} onClick={() => router(`/single-product/${product._id}`)}>
               <div className="product-card-left">
                 <img src={product.image} alt="product" />
               </div>
@@ -115,7 +115,6 @@ const Cart = () => {
                   <div className="product-title">
                     <p>{product.name}</p>
                     <div className="product-color">{product.title}</div>
-                    <div className="product-size">Quantity: {product.quantity}</div>
                   </div>
                   <div className="price-cross-heart">
                     <div className="price">₹{product.price}</div>
