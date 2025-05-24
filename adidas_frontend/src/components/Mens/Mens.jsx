@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import '../Mens/Mens.css';
 import { HiArrowLongRight } from "react-icons/hi2";
@@ -7,12 +7,16 @@ import { PiHeartStraight } from "react-icons/pi";
 import Footer from '../Footer/Footer';
 import Api from '../../axiosconfig';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/auth.context';
+import toast from 'react-hot-toast';
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330;
 const scrollStep = cardWidth * 4;
 
 const Mens = () => {
+  const { state } = useContext(AuthContext);
+
   const [whathotitem1, setWhathotitem1] = useState([
     { itemimg: "https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/tc_men_440c1ec031.jpg", title: "Play your best Padel", desc: "Get ready for your next Padel session with the best from adidas.", category: "SHOP NOW" },
     { itemimg: "https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/TC_Gif_1050x1400_47a5f13a3c.gif", title: "Man Utd Bring Back", desc: "Wear the legacy of '91.", category: "Shop now" },
@@ -74,6 +78,21 @@ const Mens = () => {
             console.log(error);
         }
     }
+
+    async function AddToWishlist(productId) {
+  try {
+    const response = await Api.post("/cart-wishlist/add-to-wishlist", {
+      userId: state?.user?.userId,
+      productId: productId,
+    });
+    if (response.data.success) {
+      toast.success(response.data.message);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
   useEffect(() => {
   // const fetchMensProducts = async () => {
@@ -231,7 +250,7 @@ const Mens = () => {
                     <div className="differentcloths" key={index} onClick={()=>router(`/single-product/${adimerclothes._id}`)}>
                         <div className="diffrentshoesimg">
                         <img src={adimerclothes.image} alt={adimerclothes.title} />
-                        <div id="heart">
+                        <div id="heart" onClick={(e) => {e.stopPropagation();  AddToWishlist(adimerclothes._id);}}>
                             <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
                         </div>
                         </div>

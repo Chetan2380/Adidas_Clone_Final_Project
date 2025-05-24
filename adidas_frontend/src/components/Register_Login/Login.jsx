@@ -136,13 +136,13 @@ const Login = () => {
               <>
                 <div className='checkbox-group'>
                   <label>
-                    <input type='checkbox' />
+                    <input type='checkbox' required/>
                     <span>
                       I would like to stay up to date with adidas. I agree to receive personalised marketing messages from adidas India Marketing Pvt. Ltd. <a href="#">Read more</a>
                     </span>
                   </label>
                   <label>
-                    <input type='checkbox' />
+                    <input type='checkbox' required/>
                     <span>
                       I have read and accepted the <a href="#">Terms & Conditions</a>, the <a href="#">adiClub Terms & Conditions</a> and the adidas <a href="#">Privacy Policy</a>. *
                     </span>

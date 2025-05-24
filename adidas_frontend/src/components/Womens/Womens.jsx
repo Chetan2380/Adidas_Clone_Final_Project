@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import "../Womens/Womens.css"
@@ -7,12 +7,17 @@ import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 import { PiHeartStraight } from "react-icons/pi";
 import Api from '../../axiosconfig';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/auth.context';
+import toast from 'react-hot-toast';
+import { FaHeart } from "react-icons/fa";
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330;
 const scrollStep = cardWidth * 4;
 const Womens = () => {
   const router = useNavigate();
+  const { state } = useContext(AuthContext);
+
   const [whathotitem1, setWhathotitem1] = useState([
       { itemimg: "https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/tc_2_2_6857c6a386.jpg", title: "Play your best Padel", desc: "Get ready for your next Padel session with the best from adidas.", category: "SHOP NOW" },
       { itemimg: "https://brand.assets.adidas.com/image/upload/f_gif,fl_lossy,q_auto/TC_Gif_1050x1400_47a5f13a3c.gif", title: "Man Utd Bring Back", desc: "Wear the legacy of '91.", category: "Shop now" },
@@ -22,7 +27,8 @@ const Womens = () => {
   ]);
 
   const[adimertop2,setAdimertop2]=useState([])
-  
+  const [wishlistItems, setWishlistItems] = useState([]);
+
   const sliderRef = useRef(null);
     const [showLeftArrow, setShowLeftArrow] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
@@ -65,9 +71,60 @@ const Womens = () => {
     }
   }
 
+  const toggleWishlist = async (productId) => {
+  if (!state?.user?.userId) {
+    toast.error("Please log in to use wishlist.");
+    return;
+  }
+
+  const isWishlisted = wishlistItems.includes(productId);
+
+  if (isWishlisted) {
+    // Remove from wishlist
+    try {
+      const res = await Api.post("/cart-wishlist/delete-wishlist-product", { productId });
+      if (res.data.success) {
+        toast.success("Removed from wishlist");
+        setWishlistItems((prev) => prev.filter((id) => id !== productId));
+      } else {
+        toast.error("Failed to remove from wishlist");
+      }
+    } catch (error) {
+      toast.error("Error removing from wishlist");
+    }
+  } else {
+    // Add to wishlist
+    try {
+      const res = await Api.post("/cart-wishlist/add-to-wishlist", {
+        userId: state?.user?.userId,
+        productId: productId,
+      });
+      if (res.data.success) {
+        toast.success("Added to wishlist");
+        setWishlistItems((prev) => [...prev, productId]);
+      }
+    } catch (error) {
+      toast.error("Error adding to wishlist");
+    }
+  }
+};
+
+
+const fetchWishlist = async () => {
+  try {
+    const res = await Api.get(`/cart-wishlist/user-wishlist/${state?.user?.userId}`);
+    if (res.data.success) {
+      setWishlistItems(res.data.products.map((p) => p._id));
+    }
+  } catch (error) {
+    console.log("Failed to fetch wishlist", error);
+  }
+};
   useEffect(() => {
-    fetchWomenProducts();
-  }, []);
+  fetchWomenProducts();
+  fetchWishlist();
+}, []);
+
 
   return (
     <div>
@@ -175,8 +232,21 @@ const Womens = () => {
                 <div className="carousel-card" key={index} onClick={() => router(`/single-product/${item._id}`)}>
                   <div className="card-image">
                     <img src={item.image} alt={item.title} />
-                    <div className="wishlist-icon">
-                      <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                    <div className="wishlist-icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleWishlist(item._id);
+                      }}
+                    >
+                      {wishlistItems.includes(item._id) ? (
+                        <FaHeart
+                          style={{ color: "black", fontSize: "22px", fontWeight: "500" }}
+                        />
+                      ) : (
+                        <PiHeartStraight
+                          style={{ color: "gray", fontSize: "22px", fontWeight: "500" }}
+                        />
+                      )}
                     </div>
                   </div>
                   <div className="card-price">₹{item.price}</div>

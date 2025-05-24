@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import "../Kids/Kids.css"
@@ -7,12 +7,15 @@ import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
 import { PiHeartStraight } from "react-icons/pi";
 import Api from '../../axiosconfig';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../context/auth.context';
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330;
 const scrollStep = cardWidth * 4;
 const Kids = () => {
   const router = useNavigate();
+      const { state } = useContext(AuthContext);
     const [whathotitem1, setWhathotitem1] = useState([
           { itemimg: "https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/global_zne_sportswear_ss25_launch_kglp_navigation_card_teaser_1_d_c07c100d10.jpg", title: "ADIDAS Z.N.E.", desc: "The lines that connect us.", category: "Shop now" },
           { itemimg: "https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/global_franchise_toolkit_samba_q1_originals_ss25_launch_navigation_card_teaser_kids_glp_d_626a27dbc1.jpg", title: "Samba", desc: "Iconic style in every step.", category: "SHOP NOW" },
@@ -65,6 +68,21 @@ const Kids = () => {
       console.error("Failed to fetch kids products:", error);
     }
   };
+
+  async function AddToWishlist(productId) {
+  try {
+    const response = await Api.post("/cart-wishlist/add-to-wishlist", {
+      userId: state?.user?.userId,
+      productId: productId,
+    });
+    if (response.data.success) {
+      toast.success(response.data.message);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
   useEffect(() => {
     fetchKidsProducts();
@@ -151,7 +169,7 @@ const Kids = () => {
                 <div className="kids-carousel-card" key={index} onClick={() => router(`/single-product/${item._id}`)}>
                   <div className="kids-card-image">
                     <img src={item.image} alt={item.title} />
-                    <div className="kids-wishlist-icon">
+                    <div className="kids-wishlist-icon" onClick={(e) => {e.stopPropagation();  AddToWishlist(item._id);}}>
                       <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
                     </div>
                   </div>
