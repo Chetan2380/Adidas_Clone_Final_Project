@@ -57,9 +57,9 @@ const Wishlist = () => {
             <>
               <div className="wishlist-left single">
                 {wishlistItems.map((product) => (
-                  <div className="wishlist-item" key={product._id} onClick={() => router(`/single-product/${product._id}`)}>
+                  <div className="wishlist-item" key={product._id}>
                     <div className="wishlist-item-img">
-                      <img src={product.image} alt="wishlist product" />
+                      <img src={product.image} alt="wishlist product" onClick={() => router(`/single-product/${product._id}`)} />
                       <button className="wishlist-remove-btn" onClick={() => removeFromWishlist(product._id)}>
                         <PiHeartStraightFill />
                       </button>
