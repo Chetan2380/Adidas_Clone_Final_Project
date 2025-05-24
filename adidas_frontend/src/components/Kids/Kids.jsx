@@ -9,12 +9,14 @@ import Api from '../../axiosconfig';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/auth.context';
+import { FaHeart } from "react-icons/fa";
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330;
 const scrollStep = cardWidth * 4;
 const Kids = () => {
   const router = useNavigate();
+  const [wishlistItems, setWishlistItems] = useState([]);
       const { state } = useContext(AuthContext);
     const [whathotitem1, setWhathotitem1] = useState([
           { itemimg: "https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/global_zne_sportswear_ss25_launch_kglp_navigation_card_teaser_1_d_c07c100d10.jpg", title: "ADIDAS Z.N.E.", desc: "The lines that connect us.", category: "Shop now" },
@@ -69,24 +71,56 @@ const Kids = () => {
     }
   };
 
-  async function AddToWishlist(productId) {
+  const fetchWishlist = async () => {
   try {
-    const response = await Api.post("/cart-wishlist/add-to-wishlist", {
-      userId: state?.user?.userId,
-      productId: productId,
-    });
-    if (response.data.success) {
-      toast.success(response.data.message);
+    const res = await Api.get(`/cart-wishlist/user-wishlist/${state?.user?.userId}`);
+    if (res.data.success) {
+      setWishlistItems(res.data.products.map((p) => p._id));
     }
   } catch (error) {
-    console.log(error);
+    console.log("Failed to fetch wishlist", error);
   }
-}
+};
 
+const toggleWishlist = async (productId) => {
+  if (!state?.user?.userId) {
+    toast.error("Please log in to use wishlist.");
+    return;
+  }
+
+  const isWishlisted = wishlistItems.includes(productId);
+
+  if (isWishlisted) {
+    try {
+      const res = await Api.post("/cart-wishlist/delete-wishlist-product", { productId });
+      if (res.data.success) {
+        toast.success("Removed from wishlist");
+        setWishlistItems((prev) => prev.filter((id) => id !== productId));
+      }
+    } catch (error) {
+      toast.error("Error removing from wishlist");
+    }
+  } else {
+    try {
+      const res = await Api.post("/cart-wishlist/add-to-wishlist", {
+        userId: state?.user?.userId,
+        productId,
+      });
+      if (res.data.success) {
+        toast.success("Added to wishlist");
+        setWishlistItems((prev) => [...prev, productId]);
+      }
+    } catch (error) {
+      toast.error("Error adding to wishlist");
+    }
+  }
+};
 
   useEffect(() => {
-    fetchKidsProducts();
-  }, []);
+  fetchKidsProducts();
+  fetchWishlist();
+}, []);
+
 
   return (
     <div>
@@ -169,9 +203,20 @@ const Kids = () => {
                 <div className="kids-carousel-card" key={index} onClick={() => router(`/single-product/${item._id}`)}>
                   <div className="kids-card-image">
                     <img src={item.image} alt={item.title} />
-                    <div className="kids-wishlist-icon" onClick={(e) => {e.stopPropagation();  AddToWishlist(item._id);}}>
-                      <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                    <div
+                      className="kids-wishlist-icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleWishlist(item._id);
+                      }}
+                    >
+                      {wishlistItems.includes(item._id) ? (
+                        <FaHeart style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                      ) : (
+                        <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                      )}
                     </div>
+
                   </div>
                   <div className="kids-card-price">₹{item.price}</div>
                   <div className="kids-card-title">{item.title}</div>

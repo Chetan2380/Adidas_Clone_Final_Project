@@ -10,6 +10,7 @@ import Api from '../../axiosconfig';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
 import toast from 'react-hot-toast';
+import { FaHeart } from "react-icons/fa";
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330; // width of one card
@@ -19,6 +20,8 @@ const Home = () => {
     const { state } = useContext(AuthContext);
     const {id}=useParams();
   const[buyshoes,setBuyshoes]=useState([])
+  const [wishlistItems, setWishlistItems] = useState([]);
+
 
 const[whathotitem,setWhathotitem]=useState([{itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/tc_ZNE_37ef896079.jpg",title:" Z.N.E. TANK SIGNED BY DECLAN RICE",desc:"Win a women's tee or tank from the new ADIDAS Z.N.E. range signed by Declan Rice.",category:"SIGN UP NOW"},
 {itemimg:"https://brand.assets.adidas.com/image/upload/f_auto,q_auto:best,fl_lossy/if_w_gt_800,w_800/100_thives_tc_beb7dbad84.jpg",title:"adidas x 100 Thieves",desc:"Digital Explorer, Analog World.",category:"Shop now"},
@@ -99,24 +102,62 @@ const fetchHomeProducts = async () => {
     }
   };
 
-  async function AddToWishlist(productId) {
-  try {
-    const response = await Api.post("/cart-wishlist/add-to-wishlist", {
-      userId: state?.user?.userId,
-      productId: productId,
-    });
-    if (response.data.success) {
-      toast.success(response.data.message);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
+  const fetchWishlist = async () => {
+    if (!state?.user?.userId) return; // Don't fetch if no user
 
+    try {
+      const res = await Api.get(`/cart-wishlist/user-wishlist/${state.user.userId}`);
+      if (res.data.success) {
+        // Store only product IDs for quick check
+        setWishlistItems(res.data.products.map((p) => p._id));
+      }
+    } catch (error) {
+      console.log("Failed to fetch wishlist", error);
+    }
+  };
+
+
+ const toggleWishlist = async (productId) => {
+    if (!state?.user?.userId) {
+      toast.error("Please log in to use wishlist.");
+      return;
+    }
+
+    const isWishlisted = wishlistItems.includes(productId);
+
+    if (isWishlisted) {
+      try {
+        const res = await Api.post("/cart-wishlist/delete-wishlist-product", { productId });
+        if (res.data.success) {
+          toast.success("Removed from wishlist");
+          setWishlistItems((prev) => prev.filter((id) => id !== productId));
+        }
+      } catch (error) {
+        toast.error("Error removing from wishlist");
+      }
+    } else {
+      try {
+        const res = await Api.post("/cart-wishlist/add-to-wishlist", {
+          userId: state.user.userId,
+          productId,
+        });
+        if (res.data.success) {
+          toast.success("Added to wishlist");
+          setWishlistItems((prev) => [...prev, productId]);
+        }
+      } catch (error) {
+        toast.error("Error adding to wishlist");
+      }
+    }
+  };
 
   useEffect(() => {
-    fetchHomeProducts();
-  }, []);
+  fetchHomeProducts();
+  if (state?.user?.userId) {
+    fetchWishlist();
+  }
+}, []);
+
 
   return (
     <div>
@@ -176,11 +217,23 @@ const fetchHomeProducts = async () => {
                 <div className="differentshoes" key={index} onClick={() => router(`/single-product/${buymoreshoes._id}`)}>
                   <div className="diffrentshoesimg">
                     <img src={buymoreshoes.image} alt={buymoreshoes.title} />
-                    <div id="heart" onClick={(e) => {
-  e.stopPropagation();
-  AddToWishlist(buymoreshoes._id);}}>
-                      <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                    <div id="heart"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleWishlist(buymoreshoes._id);
+                      }}
+                    >
+                      {wishlistItems.includes(buymoreshoes._id) ? (
+                        <FaHeart
+                          style={{ color: "black", fontSize: "22px", fontWeight: "500" }}
+                        />
+                      ) : (
+                        <PiHeartStraight
+                          style={{ color: "black", fontSize: "22px", fontWeight: "500" }}
+                        />
+                      )}
                     </div>
+
                   </div>
                   <div className="differentshoesprice">₹{buymoreshoes.price}</div>
                   <div className="differentshoestitle">{buymoreshoes.title}</div>

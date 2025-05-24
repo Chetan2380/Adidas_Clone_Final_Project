@@ -9,6 +9,8 @@ import Api from '../../axiosconfig';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
 import toast from 'react-hot-toast';
+import { FaHeart } from "react-icons/fa";
+
 
 const ITEMS_PER_PAGE = 4;
 const cardWidth = 330;
@@ -34,6 +36,7 @@ const Mens = () => {
 
   const[adimertop,setAdimertop]=useState([])
     const router=useNavigate();
+      const [wishlistItems, setWishlistItems] = useState([]);
   
 
   const sliderRef = useRef(null);
@@ -79,19 +82,55 @@ const Mens = () => {
         }
     }
 
-    async function AddToWishlist(productId) {
+const fetchWishlist = async () => {
   try {
-    const response = await Api.post("/cart-wishlist/add-to-wishlist", {
-      userId: state?.user?.userId,
-      productId: productId,
-    });
-    if (response.data.success) {
-      toast.success(response.data.message);
+    const res = await Api.get(`/cart-wishlist/user-wishlist/${state?.user?.userId}`);
+    if (res.data.success) {
+      setWishlistItems(res.data.products.map((p) => p._id));
     }
   } catch (error) {
-    console.log(error);
+    console.log("Failed to fetch wishlist", error);
   }
-}
+};
+
+
+const toggleWishlist = async (productId) => {
+  if (!state?.user?.userId) {
+    toast.error("Please log in to use wishlist.");
+    return;
+  }
+
+  const isWishlisted = wishlistItems.includes(productId);
+
+  if (isWishlisted) {
+    // Remove from wishlist
+    try {
+      const res = await Api.post("/cart-wishlist/delete-wishlist-product", { productId });
+      if (res.data.success) {
+        toast.success("Removed from wishlist");
+        setWishlistItems((prev) => prev.filter((id) => id !== productId));
+      } else {
+        toast.error("Failed to remove from wishlist");
+      }
+    } catch (error) {
+      toast.error("Error removing from wishlist");
+    }
+  } else {
+    // Add to wishlist
+    try {
+      const res = await Api.post("/cart-wishlist/add-to-wishlist", {
+        userId: state?.user?.userId,
+        productId: productId,
+      });
+      if (res.data.success) {
+        toast.success("Added to wishlist");
+        setWishlistItems((prev) => [...prev, productId]);
+      }
+    } catch (error) {
+      toast.error("Error adding to wishlist");
+    }
+  }
+};
 
 
   useEffect(() => {
@@ -106,6 +145,7 @@ const Mens = () => {
   // };
 
   fetchMensProducts();
+  fetchWishlist();
 }, []);
 
   return (
@@ -250,9 +290,20 @@ const Mens = () => {
                     <div className="differentcloths" key={index} onClick={()=>router(`/single-product/${adimerclothes._id}`)}>
                         <div className="diffrentshoesimg">
                         <img src={adimerclothes.image} alt={adimerclothes.title} />
-                        <div id="heart" onClick={(e) => {e.stopPropagation();  AddToWishlist(adimerclothes._id);}}>
+                        <div
+                          id="heart"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleWishlist(adimerclothes._id);
+                          }}
+                        >
+                          {wishlistItems.includes(adimerclothes._id) ? (
+                            <FaHeart style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                          ) : (
                             <PiHeartStraight style={{ color: "black", fontSize: "22px", fontWeight: "500" }} />
+                          )}
                         </div>
+
                         </div>
                         <div className="differentshoesprice">₹{adimerclothes.price}</div>
                         <div className="differentshoestitle">{adimerclothes.title}</div>
